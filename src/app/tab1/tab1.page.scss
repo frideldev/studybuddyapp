@@ -1,3 +1,136 @@
-.content-container {
-  padding: 20px;
+// Tasks Container
+.tasks-container {
+  padding: 16px;
+  background-color: var(--ion-color-dark);
+  min-height: 100vh;
+}
+
+// Header Toolbar Styles
+ion-toolbar {
+  --background: var(--ion-color-dark);
+  --color: var(--ion-color-light);
+}
+
+ion-title {
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--ion-color-light);
+}
+
+// Add Task Button
+.add-task-btn {
+  --background: #007AFF;
+  --color: white;
+  --border-radius: 8px;
+  margin-right: 8px;
+  height: 36px;
+  font-weight: 500;
+  
+  ion-icon {
+    font-size: 18px;
+  }
+}
+
+// Search Bar
+.tasks-searchbar {
+  --background: #2a2a2a;
+  --color: var(--ion-color-light);
+  --placeholder-color: #8c8c8c;
+  --icon-color: #8c8c8c;
+  --border-radius: 12px;
+  margin-bottom: 16px;
+  
+  .searchbar-input {
+    --background: #2a2a2a !important;
+    --color: var(--ion-color-light) !important;
+    border: 1px solid #3a3a3a;
+    border-radius: 12px;
+  }
+  
+  .searchbar-search-icon {
+    color: #8c8c8c !important;
+  }
+}
+
+// Filter Buttons
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.filter-btn {
+  --border-radius: 20px;
+  height: 36px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  
+  &.active {
+    --background: #007AFF;
+    --color: white;
+  }
+  
+  &:not(.active) {
+    --background: transparent;
+    --color: #8c8c8c;
+    --border-color: #3a3a3a;
+    --border-style: solid;
+    --border-width: 1px;
+  }
+  
+  ion-icon {
+    font-size: 16px;
+    margin-right: 4px;
+  }
+}
+
+// Tasks List Area
+.tasks-list-area {
+  margin-top: 8px;
+}
+
+// Empty State
+.empty-tasks-message {
+  text-align: center;
+  margin-top: 60px;
+  color: #8c8c8c;
+  
+  .empty-icon {
+    font-size: 64px;
+    color: #4a4a4a;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    margin: 8px 0;
+    font-size: 16px;
+    
+    &.empty-subtitle {
+      font-size: 14px;
+      color: #6c6c6c;
+    }
+  }
+}
+
+// General Styling
+ion-content {
+  --background: var(--ion-color-dark);
+  --color: var(--ion-color-light);
+}
+
+// Dark theme support
+:host-context(.ion-palette-dark) {
+  .tasks-container {
+    background-color: #1a1a1a;
+  }
+  
+  .tasks-searchbar {
+    --background: #2a2a2a;
+    
+    .searchbar-input {
+      --background: #2a2a2a !important;
+    }
+  }
 }

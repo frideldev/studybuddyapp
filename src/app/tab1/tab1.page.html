@@ -1,26 +1,70 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Tab 1</ion-title>
+    <ion-title>Tasks</ion-title>
+    <ion-button 
+      slot="end" 
+      fill="solid" 
+      size="small" 
+      color="primary"
+      class="add-task-btn">
+      <ion-icon name="add" slot="start"></ion-icon>
+      Add Task
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Tasks</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <!-- Empty content area to fill -->
-  <div class="content-container">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Tab 1 - Ready to Fill</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>This is Tab 1 content area. Add your content here.</p>
-        <ion-button fill="outline" color="primary">Sample Button</ion-button>
-      </ion-card-content>
-    </ion-card>
+  <div class="tasks-container">
+    <!-- Search Bar -->
+    <ion-searchbar 
+      placeholder="Search tasks..." 
+      debounce="300"
+      class="tasks-searchbar">
+    </ion-searchbar>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+      <ion-button 
+        fill="solid" 
+        size="small" 
+        color="primary"
+        class="filter-btn active">
+        All (8)
+      </ion-button>
+      
+      <ion-button 
+        fill="outline" 
+        size="small" 
+        color="medium"
+        class="filter-btn">
+        <ion-icon name="pause" slot="start"></ion-icon>
+        Not Started (4)
+      </ion-button>
+      
+      <ion-button 
+        fill="outline" 
+        size="small" 
+        color="medium"
+        class="filter-btn">
+        <ion-icon name="play" slot="start"></ion-icon>
+        Progress
+      </ion-button>
+    </div>
+
+    <!-- Tasks List Area -->
+    <div class="tasks-list-area">
+      <!-- Empty state - tasks will be added manually later -->
+      <div class="empty-tasks-message">
+        <ion-icon name="checkbox-outline" class="empty-icon"></ion-icon>
+        <p>No tasks to display</p>
+        <p class="empty-subtitle">Tasks will appear here when added</p>
+      </div>
+    </div>
   </div>
 </ion-content>
