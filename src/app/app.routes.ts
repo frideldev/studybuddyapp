@@ -26,6 +26,10 @@ export const routes: Routes = [
         loadComponent: () => import('./tab5/tab5.page').then((m) => m.Tab5Page),
       },
       {
+        path: 'tab6',
+        loadComponent: () => import('./tab6/tab6.page').then((m) => m.Tab6Page),
+      },
+      {
         path: '',
         redirectTo: 'tab1',
         pathMatch: 'full',
@@ -41,13 +45,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./auth/register/register.component').then((m) => m.RegisterComponent),
   },
+  {path: 'login',
+    loadComponent: () =>
+      import('./login/login.page').then((m) => m.LoginPage),
+    },
   {
     path: '',
     redirectTo: 'tabs',
     pathMatch: 'full',
-  },
-  {
-    path: 'groups',
-    loadComponent: () => import('./groups/groups.page').then( m => m.GroupsPage)
   },
 ];
