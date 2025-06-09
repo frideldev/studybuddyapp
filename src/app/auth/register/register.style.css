@@ -34,8 +34,7 @@
   height: 61px;
   font-size: 20px;
   position: absolute;
-  top: 12px; /* antes: top: 0; */
-  left: 0;
+  top: 12px; 
   font-family: "Inter", Helvetica;
   font-weight: 700;
   color: #ffffff;
@@ -64,7 +63,7 @@
   font-size: 32px;
   position: absolute;
   top: 0;
-  left: 0;
+  left: -20px; 
   font-family: "Inter", Helvetica;
   font-weight: 700;
   color: #ffffff;
