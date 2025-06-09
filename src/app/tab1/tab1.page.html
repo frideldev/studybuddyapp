@@ -6,7 +6,8 @@
       fill="solid" 
       size="small" 
       color="primary"
-      class="add-task-btn">
+      class="add-task-btn"
+      (click)="SHOW_ADD_TASK_MODAL()">
       <ion-icon name="add" slot="start"></ion-icon>
       Add Task
     </ion-button>
@@ -25,46 +26,220 @@
     <ion-searchbar 
       placeholder="Search tasks..." 
       debounce="300"
-      class="tasks-searchbar">
+      class="tasks-searchbar"
+      (ionInput)="SEARCH_TASKS($event)">
     </ion-searchbar>
 
     <!-- Filter Buttons -->
     <div class="filter-buttons">
       <ion-button 
-        fill="solid" 
+        [fill]="selectedFilter === 'all' ? 'solid' : 'outline'"
+        [color]="selectedFilter === 'all' ? 'primary' : 'medium'"
         size="small" 
-        color="primary"
-        class="filter-btn active">
-        All (8)
+        class="filter-btn"
+        (click)="SET_FILTER('all')">
+        All ({{taskCounts.all}})
       </ion-button>
       
       <ion-button 
-        fill="outline" 
+        [fill]="selectedFilter === 'notStarted' ? 'solid' : 'outline'"
+        [color]="selectedFilter === 'notStarted' ? 'primary' : 'medium'"
         size="small" 
-        color="medium"
-        class="filter-btn">
+        class="filter-btn"
+        (click)="SET_FILTER('notStarted')">
         <ion-icon name="pause" slot="start"></ion-icon>
-        Not Started (4)
+        Not Started ({{taskCounts.notStarted}})
       </ion-button>
       
       <ion-button 
-        fill="outline" 
+        [fill]="selectedFilter === 'progress' ? 'solid' : 'outline'"
+        [color]="selectedFilter === 'progress' ? 'primary' : 'medium'"
         size="small" 
-        color="medium"
-        class="filter-btn">
+        class="filter-btn"
+        (click)="SET_FILTER('progress')">
         <ion-icon name="play" slot="start"></ion-icon>
-        Progress
+        Progress ({{taskCounts.progress}})
       </ion-button>
     </div>
 
     <!-- Tasks List Area -->
     <div class="tasks-list-area">
-      <!-- Empty state - tasks will be added manually later -->
-      <div class="empty-tasks-message">
-        <ion-icon name="checkbox-outline" class="empty-icon"></ion-icon>
-        <p>No tasks to display</p>
-        <p class="empty-subtitle">Tasks will appear here when added</p>
+      <!-- Tasks List -->
+      <div *ngIf="filteredTasks.length > 0; else emptyState" class="tasks-list">
+        <div *ngFor="let task of filteredTasks" class="task-card">
+          <!-- Delete Button -->
+          <ion-button 
+            fill="clear" 
+            size="small" 
+            class="delete-btn"
+            (click)="DELETE_TASK(task.id)">
+            <ion-icon name="close" color="danger"></ion-icon>
+          </ion-button>
+          
+          <!-- Task Content -->
+          <div class="task-content">
+            <div class="task-header">
+              <h3 class="task-title">{{task.title}}</h3>
+              <div class="task-priority" [ngClass]="'priority-' + task.priority">
+                <ion-icon name="star"></ion-icon>
+              </div>
+            </div>
+            
+            <p class="task-subject">{{task.subject}}</p>
+            
+            <div class="task-details">
+              <div class="task-date">
+                <ion-icon name="calendar-outline"></ion-icon>
+                <span>{{FORMAT_DATE(task.date)}}</span>
+              </div>
+              <div class="task-duration">
+                <ion-icon name="time-outline"></ion-icon>
+                <span>{{task.duration}} {{task.durationUnit}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- Empty state -->
+      <ng-template #emptyState>
+        <div class="empty-tasks-message">
+          <ion-icon name="checkbox-outline" class="empty-icon"></ion-icon>
+          <p>No tasks to display</p>
+          <p class="empty-subtitle">Tasks will appear here when added</p>
+        </div>
+      </ng-template>
     </div>
   </div>
+
+  <!-- Add Task Modal -->
+  <ion-modal [isOpen]="showAddTaskModal" (ionModalDidDismiss)="CLOSE_ADD_TASK_MODAL()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Add Task</ion-title>
+          <ion-button slot="end" fill="clear" (click)="CLOSE_ADD_TASK_MODAL()">
+            <ion-icon name="close"></ion-icon>
+          </ion-button>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content class="add-task-modal-content">
+        <form (ngSubmit)="SAVE_TASK()" #taskForm="ngForm">
+          <!-- Title Field -->
+          <ion-item class="form-item">
+            <ion-label position="stacked">Title *</ion-label>
+            <ion-input 
+              [(ngModel)]="newTask.title" 
+              name="title" 
+              placeholder="Enter task title..." 
+              required>
+            </ion-input>
+          </ion-item>
+
+          <!-- Subject Field -->
+          <ion-item class="form-item">
+            <ion-label position="stacked">Subject</ion-label>
+            <ion-input 
+              [(ngModel)]="newTask.subject" 
+              name="subject" 
+              placeholder="e.g., Biology 101, Calculus II...">
+            </ion-input>
+          </ion-item>
+
+          <!-- Date & Time -->
+          <div class="date-time-group">
+            <ion-item class="form-item half-width">
+              <ion-label position="stacked">Date *</ion-label>
+              <ion-input 
+                type="date" 
+                [(ngModel)]="newTask.date" 
+                name="date" 
+                required>
+              </ion-input>
+            </ion-item>
+
+            <ion-item class="form-item half-width">
+              <ion-label position="stacked">Time *</ion-label>
+              <ion-input 
+                type="time" 
+                [(ngModel)]="newTask.time" 
+                name="time" 
+                required>
+              </ion-input>
+            </ion-item>
+          </div>
+
+          <!-- Duration -->
+          <div class="duration-group">
+            <ion-item class="form-item duration-input">
+              <ion-label position="stacked">Duration *</ion-label>
+              <ion-input 
+                type="number" 
+                [(ngModel)]="newTask.duration" 
+                name="duration" 
+                placeholder="Enter duration..." 
+                min="1" 
+                required>
+              </ion-input>
+            </ion-item>
+
+            <ion-item class="form-item duration-unit">
+              <ion-select 
+                [(ngModel)]="newTask.durationUnit" 
+                name="durationUnit" 
+                placeholder="Unit">
+                <ion-select-option value="minutes">Minutes</ion-select-option>
+                <ion-select-option value="hours">Hours</ion-select-option>
+                <ion-select-option value="days">Days</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+
+          <!-- Priority -->
+          <div class="priority-section">
+            <ion-label class="section-label">Priority</ion-label>
+            <div class="priority-buttons">
+              <ion-button 
+                [fill]="newTask.priority === 'low' ? 'solid' : 'outline'" 
+                [color]="newTask.priority === 'low' ? 'success' : 'medium'"
+                size="small"
+                (click)="SET_PRIORITY('low')">
+                Low
+              </ion-button>
+              <ion-button 
+                [fill]="newTask.priority === 'medium' ? 'solid' : 'outline'" 
+                [color]="newTask.priority === 'medium' ? 'warning' : 'medium'"
+                size="small"
+                (click)="SET_PRIORITY('medium')">
+                Medium
+              </ion-button>
+              <ion-button 
+                [fill]="newTask.priority === 'high' ? 'solid' : 'outline'" 
+                [color]="newTask.priority === 'high' ? 'danger' : 'medium'"
+                size="small"
+                (click)="SET_PRIORITY('high')">
+                High
+              </ion-button>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <ion-button 
+              expand="block" 
+              fill="outline" 
+              color="medium"
+              (click)="CLOSE_ADD_TASK_MODAL()">
+              Cancel
+            </ion-button>
+            <ion-button 
+              expand="block" 
+              type="submit" 
+              [disabled]="!taskForm.valid">
+              Add Task
+            </ion-button>
+          </div>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
