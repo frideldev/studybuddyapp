@@ -5,20 +5,50 @@
 </ion-header>
 
 <ion-content class="ion-padding" color="dark">
-  <h2 class="text-white text-lg font-bold mb-2">Study Groups</h2>
+  <div class="flex-row-between">
+    <h2 class="text-white text-lg font-bold">Study Groups</h2>
+    <ion-button size="small" color="primary">+ Create Group</ion-button>
+  </div>
 
-  <div *ngFor="let group of studyGroups" class="mt-4 rounded-lg overflow-hidden bg-[#1f1f1f]">
-    <img [src]="group.image" alt="Group Image" class="w-full h-36 object-cover" />
-    <div class="p-3">
-      <h3 class="text-white font-semibold text-md">{{ group.title }}</h3>
-      <p class="text-sm text-gray-400">{{ group.subject }}</p>
-      <div class="flex items-center text-gray-400 text-lg mt-2 gap-4">
+  <div *ngFor="let group of studyGroups" class="group-card">
+    <img [src]="group.image" alt="Group Image" class="group-img" />
+    <div class="group-content">
+      <h3>{{ group.title }}</h3>
+      <p class="subject">{{ group.subject }}</p>
+      <div class="icons-row">
+        <ion-icon name="chatbubble-outline"></ion-icon>
         <ion-icon name="lock-closed-outline"></ion-icon>
         <ion-icon name="calendar-outline"></ion-icon>
-        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-        <ion-badge color="medium" class="ml-auto">{{ group.members }}</ion-badge>
+        <ion-badge color="primary" class="badge">{{ group.members }}</ion-badge>
       </div>
-      <p class="text-xs text-gray-500 mt-1">{{ group.active }}</p>
+      <p class="active-time">{{ group.active }}</p>
     </div>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/dashboard">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/calendar">
+        <ion-icon name="calendar-outline"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/tasks">
+        <ion-icon name="list-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/groups" color="primary">
+        <ion-icon name="people-outline"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/analytics">
+        <ion-icon name="bar-chart-outline"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/settings">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
