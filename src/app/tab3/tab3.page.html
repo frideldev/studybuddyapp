@@ -5,39 +5,72 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Study Groups</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <ion-row class="title-row">
-    <ion-col><h2>Study Groups</h2></ion-col>
+    <ion-col><h1>Study Groups</h1></ion-col>
     <ion-col size="auto">
-      <ion-button color="primary" fill="solid" shape="round">
+      <ion-button color="primary" shape="round" (click)="toggleForm()">
         + Create Group
       </ion-button>
     </ion-col>
   </ion-row>
 
-  <ion-card *ngFor="let group of groups">
-    <img [src]="group.image" />
+  <!-- FORMULARIO DE NUEVO GRUPO -->
+  <ion-card *ngIf="showCreateForm">
+    <ion-card-header>
+      <ion-card-title>Create New Group</ion-card-title>
+    </ion-card-header>
     <ion-card-content>
-      <div class="header-row">
-        <div>
-          <h2>{{ group.title }}</h2>
-          <p>{{ group.course }}</p>
-        </div>
-        <ion-badge color="primary">👥 {{ group.members }}</ion-badge>
-      </div>
+      <ion-item>
+        <ion-label position="floating">Title</ion-label>
+        <ion-input [(ngModel)]="newGroup.title"></ion-input>
+      </ion-item>
 
-      <ion-row class="icon-row">
-        <ion-icon name="chatbubble-outline"></ion-icon>
-        <ion-icon name="calendar-outline"></ion-icon>
-        <ion-icon name="document-text-outline"></ion-icon>
-      </ion-row>
+      <ion-item>
+        <ion-label position="floating">Course</ion-label>
+        <ion-input [(ngModel)]="newGroup.course"></ion-input>
+      </ion-item>
 
-      <p class="status">{{ group.activeStatus }}</p>
+      <ion-item>
+        <ion-label position="floating">Members</ion-label>
+        <ion-input type="number" [(ngModel)]="newGroup.members"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Image URL</ion-label>
+        <ion-input [(ngModel)]="newGroup.image"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Active Status</ion-label>
+        <ion-input [(ngModel)]="newGroup.activeStatus"></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" color="success" (click)="addGroup()">Add Group</ion-button>
     </ion-card-content>
   </ion-card>
+
+  <!-- LISTADO DE GRUPOS EXISTENTES -->
+  <ng-container *ngFor="let group of groups">
+    <ion-card>
+      <img [src]="group.image" alt="Group image" />
+      <ion-card-content>
+        <div class="header-row">
+          <div>
+            <h2>{{ group.title }}</h2>
+            <p>{{ group.course }}</p>
+          </div>
+          <ion-badge color="primary">👥 {{ group.members }}</ion-badge>
+        </div>
+
+        <ion-row class="icon-row">
+          <ion-icon name="chatbubble-outline"></ion-icon>
+          <ion-icon name="calendar-outline"></ion-icon>
+          <ion-icon name="document-text-outline"></ion-icon>
+        </ion-row>
+
+        <p class="status">{{ group.activeStatus }}</p>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
 </ion-content>
