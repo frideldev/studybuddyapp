@@ -45,6 +45,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./auth/register/register.component').then((m) => m.RegisterComponent),
   },
+  {path: 'login',
+    loadComponent: () =>
+      import('./login/login.page').then((m) => m.LoginPage),
+    },
   {
     path: '',
     redirectTo: 'tabs',
