@@ -11,11 +11,34 @@ import { IonicModule } from '@ionic/angular';
   imports: [CommonModule, FormsModule, IonicModule]
 })
 export class Tab3Page {
-  tabThreeContent: any = {};
+  groups = [
+    {
+      title: 'Calculus Study Group',
+      course: 'MATH 201',
+      members: 5,
+      image: 'assets/images/group1.jpg',
+      activeStatus: 'Active 2 hours ago',
+    },
+    {
+      title: 'Physics Lab Partners',
+      course: 'PHYS 101',
+      members: 3,
+      image: 'assets/images/group2.jpg',
+      activeStatus: 'Active Yesterday',
+    },
+    {
+      title: 'Programming Project Team',
+      course: 'MATH 201',
+      members: 4,
+      image: 'assets/images/group3.jpg',
+      activeStatus: 'Active Just now',
+    },
+  ];
+
   selectedOption: string = '';
   isActive: boolean = true;
 
-  constructor() { }
+  constructor() {}
 
   LOAD_CONTENT() {
     // Load content
