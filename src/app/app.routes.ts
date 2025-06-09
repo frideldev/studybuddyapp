@@ -46,4 +46,8 @@ export const routes: Routes = [
     redirectTo: 'tabs',
     pathMatch: 'full',
   },
+  {
+    path: 'groups',
+    loadComponent: () => import('./groups/groups.page').then( m => m.GroupsPage)
+  },
 ];
