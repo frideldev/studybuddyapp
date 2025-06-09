@@ -4,51 +4,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" color="dark">
-  <div class="flex-row-between">
-    <h2 class="text-white text-lg font-bold">Study Groups</h2>
+<ion-content color="dark" class="ion-padding">
+  <div class="title-row">
+    <h2>Study Groups</h2>
     <ion-button size="small" color="primary">+ Create Group</ion-button>
   </div>
 
   <div *ngFor="let group of studyGroups" class="group-card">
-    <img [src]="group.image" alt="Group Image" class="group-img" />
-    <div class="group-content">
+    <img [src]="group.image" alt="group" />
+    <div class="card-content">
       <h3>{{ group.title }}</h3>
       <p class="subject">{{ group.subject }}</p>
-      <div class="icons-row">
+      <div class="icons">
         <ion-icon name="chatbubble-outline"></ion-icon>
         <ion-icon name="lock-closed-outline"></ion-icon>
         <ion-icon name="calendar-outline"></ion-icon>
-        <ion-badge color="primary" class="badge">{{ group.members }}</ion-badge>
+        <ion-badge color="primary">{{ group.members }}</ion-badge>
       </div>
-      <p class="active-time">{{ group.active }}</p>
+      <p class="active">{{ group.active }}</p>
     </div>
   </div>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar color="dark">
-    <ion-buttons slot="start">
-      <ion-button routerLink="/dashboard">
-        <ion-icon name="home-outline"></ion-icon>
-      </ion-button>
-      <ion-button routerLink="/calendar">
-        <ion-icon name="calendar-outline"></ion-icon>
-      </ion-button>
-      <ion-button routerLink="/tasks">
-        <ion-icon name="list-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button routerLink="/groups" color="primary">
-        <ion-icon name="people-outline"></ion-icon>
-      </ion-button>
-      <ion-button routerLink="/analytics">
-        <ion-icon name="bar-chart-outline"></ion-icon>
-      </ion-button>
-      <ion-button routerLink="/settings">
-        <ion-icon name="settings-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>
