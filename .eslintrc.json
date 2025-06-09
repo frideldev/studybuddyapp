@@ -34,6 +34,37 @@
             "prefix": "app",
             "style": "camelCase"
           }
+        ],
+         "max-len": ["error", 80, {
+          "ignoreComments": true,
+          "ignoreUrls": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true
+        }],
+        "max-lines": ["error", {
+          "max": 200,
+          "skipBlankLines": true,
+          "skipComments": true
+        }],
+        "max-lines-per-function": ["error", {
+          "max": 50,
+          "skipBlankLines": true,
+          "skipComments": true
+        }],
+         "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "default",
+            "format": ["camelCase"]
+          },
+          {
+            "selector": "variable",
+            "format": ["camelCase"]
+          },
+          {
+            "selector": "function",
+            "format": ["UPPER_CASE"]
+          }
         ]
       }
     },
