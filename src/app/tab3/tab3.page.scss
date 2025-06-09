@@ -1,3 +1,19 @@
-.content-container {
-  padding: 20px;
+:host {
+  ion-content {
+    --background: #121212;
+  }
+
+  ion-toolbar {
+    --background: #1f1f1f;
+  }
+
+  ion-badge {
+    font-size: 0.7rem;
+    padding: 0 6px;
+    border-radius: 8px;
+  }
+
+  img {
+    border-bottom: 1px solid #2a2a2a;
+  }
 }

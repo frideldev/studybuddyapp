@@ -1,26 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Tab 3</ion-title>
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Groups</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" color="dark">
+  <h2 class="text-white text-lg font-bold mb-2">Study Groups</h2>
 
-  <!-- Empty content area to fill -->
-  <div class="content-container">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Tab 3 - Ready to Fill</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>This is Tab 3 content area. Add your content here.</p>
-        <ion-button fill="outline" color="tertiary">Sample Button</ion-button>
-      </ion-card-content>
-    </ion-card>
+  <div *ngFor="let group of studyGroups" class="mt-4 rounded-lg overflow-hidden bg-[#1f1f1f]">
+    <img [src]="group.image" alt="Group Image" class="w-full h-36 object-cover" />
+    <div class="p-3">
+      <h3 class="text-white font-semibold text-md">{{ group.title }}</h3>
+      <p class="text-sm text-gray-400">{{ group.subject }}</p>
+      <div class="flex items-center text-gray-400 text-lg mt-2 gap-4">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-icon name="calendar-outline"></ion-icon>
+        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+        <ion-badge color="medium" class="ml-auto">{{ group.members }}</ion-badge>
+      </div>
+      <p class="text-xs text-gray-500 mt-1">{{ group.active }}</p>
+    </div>
   </div>
 </ion-content>
