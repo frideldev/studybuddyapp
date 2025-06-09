@@ -9,5 +9,9 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
+  },  {
+    path: 'groups',
+    loadComponent: () => import('./groups/groups.page').then( m => m.GroupsPage)
   },
+
 ];
