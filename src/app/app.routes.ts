@@ -45,5 +45,4 @@ export const routes: Routes = [
     path: 'groups',
     loadComponent: () => import('./groups/groups.page').then( m => m.GroupsPage)
   },
-
 ];
