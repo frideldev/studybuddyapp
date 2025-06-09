@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { CrearGrupoComponent } from '../crear-grupo/crear-grupo.component';
 
 @Component({
   selector: 'app-tab3',
@@ -33,4 +34,19 @@ export class Tab3Page {
       members: 4
     }
   ];
+
+  constructor(private modalCtrl: ModalController) {}
+
+  async CREATEGROUP() {
+    const modal = await this.modalCtrl.create({
+      component: CrearGrupoComponent
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onDidDismiss();
+    if (data) {
+      this.studyGroups.unshift(data);
+    }
+  }
 }
