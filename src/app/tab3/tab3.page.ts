@@ -1,35 +1,36 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tab3',
-  templateUrl: './tab3.page.html',
-  styleUrls: ['./tab3.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule]
+  imports: [IonicModule, CommonModule],
+  templateUrl: './tab3.page.html',
+  styleUrls: ['./tab3.page.scss']
 })
 export class Tab3Page {
-  tabThreeContent: any = {};
-  selectedOption: string = '';
-  isActive: boolean = true;
-
-  constructor() { }
-
-  LOAD_CONTENT() {
-    // Load content
-  }
-
-  FILTER_DATA() {
-    // Filter data
-  }
-
-  EXPORT_RESULTS() {
-    // Export results
-  }
-
-  REFRESH_VIEW() {
-    // Refresh view
-  }
+  studyGroups = [
+    {
+      title: 'Calculus Study Group',
+      subject: 'MATH 201',
+      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
+      active: 'Active 2 hours ago',
+      members: 5
+    },
+    {
+      title: 'Physics Lab Partners',
+      subject: 'PHYS 101',
+      image: 'https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg',
+      active: 'Active Yesterday',
+      members: 3
+    },
+    {
+      title: 'Programming Project Team',
+      subject: 'MATH 201',
+      image: 'https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg',
+      active: 'Active just now',
+      members: 4
+    }
+  ];
 }
