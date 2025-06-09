@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/services/auth_service'; // Asegúrate de que la ruta sea correcta
+import { AuthService } from 'src/services/auth.service'; // Asegúrate de que la ruta sea correcta
 
 @Component({
   selector: 'app-login',
