@@ -9,93 +9,90 @@
   <body>
     <div class="scroll-wrapper">
       <div class="create-account">
-        
         <div class="div">
-          <div class="next-button">
-            <div class="overlap-group">
-              <div class="text-wrapper">Crear cuenta</div>
-              <button id="createAccountBtn" type="button" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer;border:none;background:none;"></button>
-            </div>
-          </div>
-          <div class="group">
-            <div class="overlap">
-              <div class="text-wrapper-2">Crear cuenta</div>
-              <p class="p">Únete a StudyBuddy para impulsar tu éxito académico</p>
-            </div>
-          </div>
-          <div class="group-2">
-            <div class="text-wrapper-3">Nombre completo</div>
-            <div class="overlap-group-wrapper">
-              <div class="div-wrapper">
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  class="text-wrapper-4"
-                  placeholder="Introduce tu nombre completo"
-                  autocomplete="off"
-                />
+          <form (ngSubmit)="onRegister()" #registerForm="ngForm">
+            <div class="next-button">
+              <div class="overlap-group">
+                <div class="text-wrapper">{{loading ? 'Creando cuenta...' : 'Crear cuenta'}}</div>
+                <button type="submit" [disabled]="loading" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer;border:none;background:none;"></button>
               </div>
             </div>
-          </div>
-          <div class="group-3">
-            <div class="text-wrapper-3">Correo electrónico</div>
-            <div class="overlap-group-wrapper">
-              <div class="div-wrapper">
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="text-wrapper-4"
-                  placeholder="Introduce tu correo electrónico"
-                  autocomplete="off"
-                />
+            <div class="group">
+              <div class="overlap">
+                <div class="text-wrapper-2">Crear cuenta</div>
+                <p class="p">Únete a StudyBuddy para impulsar tu éxito académico</p>
               </div>
             </div>
-          </div>
-          <div class="group-4">
-            <div class="text-wrapper-3">Contraseña</div>
-            <div class="overlap-group-wrapper">
-              <div class="div-wrapper">
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  class="text-wrapper-4"
-                  placeholder="Crea una contraseña"
-                  autocomplete="off"
-                />
+            <div class="group-2">
+              <div class="text-wrapper-3">Nombre completo</div>
+              <div class="overlap-group-wrapper">
+                <div class="div-wrapper">
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    class="text-wrapper-4"
+                    [(ngModel)]="fullName"
+                    placeholder="Introduce tu nombre completo"
+                    required
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="group-5">
-            <p class="already-have-an">
-              <span class="span">¿Ya tienes una cuenta?</span>
-              <span class="text-wrapper-5">&nbsp;</span>
-              <a href="#" id="loginLink" class="text-wrapper-6">Iniciar sesión</a>
-            </p>
-            <p class="text-wrapper-7">Al crear una cuenta, aceptas nuestros Términos de servicio y Política de privacidad.</p>
-          </div>
-          <div class="text-wrapper-8">
-            <a href="#" id="backLink" style="color:inherit;text-decoration:none;">← Volver</a>
-          </div>
+            <div class="group-3">
+              <div class="text-wrapper-3">Correo electrónico</div>
+              <div class="overlap-group-wrapper">
+                <div class="div-wrapper">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="text-wrapper-4"
+                    [(ngModel)]="email"
+                    placeholder="Introduce tu correo electrónico"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="group-4">
+              <div class="text-wrapper-3">Contraseña</div>
+              <div class="overlap-group-wrapper">
+                <div class="div-wrapper">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="text-wrapper-4"
+                    [(ngModel)]="password"
+                    placeholder="Crea una contraseña"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="group-5">
+              <p class="already-have-an">
+                <span class="span">¿Ya tienes una cuenta?</span>
+                <span class="text-wrapper-5">&nbsp;</span>
+                <a href="#" id="loginLink" class="text-wrapper-6">Iniciar sesión</a>
+              </p>
+              <p class="text-wrapper-7">Al crear una cuenta, aceptas nuestros Términos de servicio y Política de privacidad.</p>
+            </div>
+            <div class="text-wrapper-8">
+              <a href="#" id="backLink" style="color:inherit;text-decoration:none;">← Volver</a>
+            </div>
+            <div *ngIf="errorMsg" class="error-message" style="color: #ff4444; text-align: center; margin-top: 10px;">
+              {{errorMsg}}
+            </div>
+            <div *ngIf="successMsg" class="success-message" style="color: #4CAF50; text-align: center; margin-top: 10px;">
+              {{successMsg}}
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('createAccountBtn')?.addEventListener('click', () => {
-          alert('Botón Crear cuenta clickeado');
-        });
-        document.getElementById('loginLink')?.addEventListener('click', (e) => {
-          e.preventDefault();
-          alert('Link Iniciar sesión clickeado');
-        });
-        document.getElementById('backLink')?.addEventListener('click', (e) => {
-          e.preventDefault();
-          alert('Volver clickeado');
-        });
-      });
-    </script>
   </body>
 </html>
