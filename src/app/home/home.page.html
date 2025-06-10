@@ -1,25 +1,91 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Study Buddy
+      Dashboard
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Study Buddy</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="dark-background">
+  <div class="content-padding">
+    <!-- Contenido del encabezado con un saludo y un botón para agregar tarea -->
+    <div class="header-content">
+      <div>
+        <h2>Hello, {{userName}}!</h2>
+        <p>{{currentDate}}</p>
+      </div>
+      <ion-button fill="solid" color="primary" (click)="addTask()">
+        <ion-icon name="add" slot="start"></ion-icon>
+        Add Task
+      </ion-button>
+    </div>
+    <!-- Tarjetas de estadisticas -->
+    <div class="stats-container">
+      <div class="stat-card" *ngFor="let stat of stats">
+        <div class="stat-header">
+          <ion-icon name="checkmark-circle" [color]="stat.color"></ion-icon>
+          <span class="stat-title">{{stat.title}}</span>
+        </div>
+        <div class="stat-value">{{stat.value}}</div>
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="stat.progress" [class]="'progress-' + stat.color"></div>
+        </div>
+      </div>
+    </div>
 
-  <div id="container">
-    <strong>Study Buddy App</strong>
-    <p>Welcome to your study companion app</p>
-    
-    <ion-button expand="block" routerLink="/tabs" color="primary">
-      <ion-icon name="apps" slot="start"></ion-icon>
-      Open Tabs
+    <!-- Motivational Quote -->
+    <div class="quote-container">
+      <p class="quote-text">{{quote}}</p>
+    </div>    <!-- Upcoming Assignments Card -->
+    <div class="floating-card assignments-card">
+      <div class="section-header">
+        <h3>Upcoming Assignments</h3>
+        <span class="see-all">See all ></span>
+      </div>
+      <div class="assignments-list">
+        <div class="assignment-item" *ngFor="let assignment of upcomingAssignments">
+          <div class="assignment-dot" [class]="'dot-' + assignment.color"></div>
+          <div class="assignment-content">
+            <div class="assignment-title">{{assignment.title}}</div>
+            <div class="assignment-subtitle">{{assignment.subject}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta de Eventos Próximos-->
+    <div class="floating-card events-card">
+      <div class="section-header">
+        <h3>Upcoming Events</h3>
+        <span class="see-all">See all ></span>
+      </div>
+      <div class="events-list">
+        <div class="event-item" *ngFor="let event of upcomingEvents">
+          <div class="event-dot" [class]="'dot-' + event.color"></div>
+          <div class="event-content">
+            <div class="event-title">{{event.title}}</div>
+            <div class="event-time">{{event.time}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Study Buddies -->
+    <div class="section-header">
+      <h3>Study Buddies</h3>
+    </div>
+    <div class="buddies-container">
+      <div class="buddies-avatars">
+        <ion-avatar *ngFor="let buddy of studyBuddies" class="buddy-avatar">
+          <img [src]="buddy.avatar" [alt]="buddy.name">
+        </ion-avatar>
+        <div class="add-buddy">
+          <ion-icon name="add"></ion-icon>
+        </div>
+      </div>
+    </div>    <!-- Study Groups Button -->
+    <ion-button expand="block" fill="outline" color="primary" class="study-groups-btn" routerLink="/tabs/tab1">
+      Study Groups
     </ion-button>
   </div>
 </ion-content>
