@@ -1,26 +1,96 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Tab 2</ion-title>
+    <ion-title>Calendar</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary">
+        <ion-icon slot="start" name="add-outline"></ion-icon>
+        Add Event
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding calendar-view">
 
-  <!-- Empty content area to fill -->
-  <div class="content-container">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Tab 2 - Ready to Fill</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>This is Tab 2 content area. Add your content here.</p>
-        <ion-button fill="outline" color="secondary">Sample Button</ion-button>
-      </ion-card-content>
-    </ion-card>
+  <h2 class="section-title">Calendar</h2>
+
+  <div class="calendar-controls">
+    <ion-button fill="clear" size="small" (click)="prevMonth()">&lt;</ion-button>
+    <h3>{{ currentDate | date: 'MMMM y' }}</h3>
+    <ion-button fill="clear" size="small" (click)="nextMonth()">&gt;</ion-button>
   </div>
+
+  <ion-segment [value]="currentView" (ionChange)="onViewChange($event)">
+    <ion-segment-button value="month">Month</ion-segment-button>
+    <ion-segment-button value="week">Week</ion-segment-button>
+    <ion-segment-button value="day">Day</ion-segment-button>
+  </ion-segment>
+
+  <!-- Vista mensual -->
+  <div class="calendar-grid" *ngIf="currentView === 'month'">
+    <div class="calendar-row header">
+      <div *ngFor="let day of daysOfWeek">{{ day }}</div>
+    </div>
+    <div class="calendar-row" *ngFor="let week of calendarMatrix">
+      <div 
+        *ngFor="let date of week" 
+        [class.today]="isToday(date)" 
+        [class.selected]="isSelected(date)" 
+        (click)="selectDate(date)">
+        {{ date.getDate() }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Vista semanal -->
+  <div *ngIf="currentView === 'week'" class="week-view">
+    <div class="week-header">
+      <div class="hour-label"></div>
+      <div *ngFor="let day of getCurrentWeek()" class="day-header">
+        {{ day | date: 'EEE d' }}
+      </div>
+    </div>
+    <div class="week-grid">
+      <div *ngFor="let hour of hours" class="hour-row">
+        <div class="hour-label">{{ hour }}</div>
+        <div *ngFor="let day of getCurrentWeek()" class="day-cell"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vista diaria -->
+  <div *ngIf="currentView === 'day'" class="day-view">
+  <div class="day-header">
+    {{ selectedDate | date: 'fullDate' }}
+  </div>
+  <div class="day-grid">
+    <div *ngFor="let hour of hours; let i = index" class="hour-row">
+  <div class="hour-label">{{ hour }}</div>
+  <div class="day-cell">
+    <ng-container *ngFor="let event of events[selectedDateStr] || []">
+      <div *ngIf="event.hour === i" class="event-block">
+        {{ event.title }}
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+  <!-- Sección de eventos -->
+  <div class="events-section">
+    <h4>Events for {{ selectedDate | date: 'MMMM d, y' }}</h4>
+    <div *ngIf="events[selectedDateStr]?.length; else noEvents">
+      <ion-item *ngFor="let event of events[selectedDateStr]">
+        <ion-label>{{ event }}</ion-label>
+      </ion-item>
+    </div>
+    <ng-template #noEvents>
+      <p class="no-events">No events scheduled for this day</p>
+    </ng-template>
+    <ion-button expand="block" fill="outline" (click)="addEvent()">Add Event</ion-button>
+  </div>
+
 </ion-content>

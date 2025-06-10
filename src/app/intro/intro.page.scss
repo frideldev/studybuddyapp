@@ -1,0 +1,171 @@
+/* intro.page.scss */
+.intro-content {
+  --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  height: 100vh;
+}
+
+.skip-button {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  z-index: 1000;
+  
+  ion-button {
+    --color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+  }
+}
+
+.intro-slides {
+  height: 100%;
+  
+  .slide-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.image-container {
+  width: 280px;
+  height: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.text-content {
+  color: white;
+  max-width: 300px;
+}
+
+.slide-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.slide-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.slide-indicators {
+  position: absolute;
+  bottom: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+  
+  .indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &.active {
+      background: white;
+      width: 24px;
+      border-radius: 4px;
+    }
+  }
+}
+
+.navigation-buttons {
+  position: absolute;
+  bottom: 40px;
+  left: 20px;
+  right: 20px;
+  z-index: 100;
+  
+  .next-button,
+  .get-started-button {
+    --background: #4c6ef5;
+    --background-activated: #364fc7;
+    --color: white;
+    margin: 0;
+    height: 50px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .get-started-button {
+    --background: linear-gradient(45deg, #4c6ef5, #7c3aed);
+  }
+}
+
+// Responsive design
+@media (max-width: 480px) {
+  .image-container {
+    width: 240px;
+    height: 240px;
+    margin-bottom: 30px;
+  }
+  
+  .slide-title {
+    font-size: 1.3rem;
+  }
+  
+  .slide-description {
+    font-size: 0.9rem;
+  }
+  
+  .text-content {
+    max-width: 280px;
+  }
+}
+
+@media (min-width: 768px) {
+  .slide-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+    max-width: 80%;
+  }
+  
+  .image-container {
+    margin-bottom: 0;
+    width: 320px;
+    height: 320px;
+  }
+  
+  .text-content {
+    text-align: left;
+    max-width: 400px;
+  }
+  
+  .slide-title {
+    font-size: 2rem;
+  }
+  
+  .slide-description {
+    font-size: 1.1rem;
+  }
+}

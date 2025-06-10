@@ -1,0 +1,42 @@
+// src/app/components/atoms/analytics-card/analytics-card.component.scss
+.analytics-card {
+  margin: 8px 0;
+  background: var(--ion-color-dark);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  
+  ion-card-content {
+    padding: 16px;
+  }
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+
+.card-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.card-title {
+  font-size: 14px;
+  color: var(--ion-color-medium);
+  font-weight: 500;
+}
+
+.card-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--ion-color-light);
+  margin-bottom: 4px;
+}
+
+.card-subtitle {
+  font-size: 12px;
+  color: var(--ion-color-medium);
+}
