@@ -3,7 +3,8 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'tabs',
-    loadComponent: () => import('./tabs/tabs.page').then((m) => m.TabsPage),    children: [
+    loadComponent: () => import('./tabs/tabs.page').then((m) => m.TabsPage),
+    children: [
       {
         path: 'home',
         loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
@@ -27,6 +28,10 @@ export const routes: Routes = [
       {
         path: 'tab5',
         loadComponent: () => import('./tab5/tab5.page').then((m) => m.Tab5Page),
+      },
+      {
+        path: 'group-details',
+        loadComponent: () => import('./group-details/group-details.page').then((m) => m.GroupDetailsPage),
       },
       {
         path: '',

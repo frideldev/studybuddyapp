@@ -1,0 +1,441 @@
+// Group Details Page - StudyBuddy Theme
+ion-content {
+  --background: #000000;
+  --color: #ffffff;
+}
+
+ion-header {
+  ion-toolbar {
+    --background: #000000;
+    --color: #ffffff;
+    --border-color: #333333;
+  }
+}
+
+// Group Header with Banner
+.group-header {
+  position: relative;
+  margin-bottom: 20px;
+  
+  .group-banner {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .group-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      padding: 40px 20px 20px;
+      
+      h1 {
+        color: #ffffff;
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      
+      .subject {
+        color: #4285f4;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 16px 0;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      }
+      
+      .group-stats {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        
+        .stat {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          color: #ffffff;
+          font-size: 14px;
+          font-weight: 500;
+          
+          ion-icon {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Content Container
+.content-container {
+  padding: 0 16px 100px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// Section Cards
+.section-card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #333333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  
+  .section-header {
+    margin-bottom: 20px;
+    
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      
+      ion-icon {
+        font-size: 24px;
+      }
+      
+      h2 {
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Members List
+.members-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  
+  .member-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    background: #262626;
+    border-radius: 12px;
+    border: 1px solid #333333;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: #2a2a2a;
+      border-color: #4285f4;
+      transform: translateY(-2px);
+    }
+    
+    .member-avatar {
+      position: relative;
+      
+      img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #333333;
+      }
+      
+      .status-dot {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid #1a1a1a;
+        
+        &.dot-danger { background: #f44336; }
+        &.dot-tertiary { background: #00bcd4; }
+        &.dot-warning { background: #ff9800; }
+        &.dot-secondary { background: #9c27b0; }
+        &.dot-success { background: #4caf50; }
+      }
+    }
+    
+    .member-info {
+      flex: 1;
+      
+      h3 {
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 4px 0;
+      }
+      
+      p {
+        color: #888888;
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Schedule List
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
+  .schedule-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: #262626;
+    border-radius: 12px;
+    border: 1px solid #333333;
+    
+    .schedule-day {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      min-width: 80px;
+    }
+    
+    .schedule-time {
+      color: #888888;
+      font-size: 14px;
+      flex: 1;
+      text-align: center;
+    }
+    
+    .schedule-status {
+      ion-badge {
+        font-size: 12px;
+        padding: 6px 12px;
+        border-radius: 12px;
+      }
+    }
+  }
+}
+
+// Info Content
+.info-content {
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #333333;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    ion-icon {
+      font-size: 20px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    
+    p {
+      color: #cccccc;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+  
+  .requirements-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #333333;
+    
+    h3 {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+    }
+    
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      
+      li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 8px 0;
+        color: #cccccc;
+        font-size: 14px;
+        line-height: 1.4;
+        
+        ion-icon {
+          font-size: 16px;
+          margin-top: 2px;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}
+
+// Action Buttons
+.action-buttons {
+  position: sticky;
+  bottom: 20px;
+  background: #000000;
+  padding: 20px 0;
+  border-top: 1px solid #333333;
+  margin: 0 -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  
+  ion-button {
+    --border-radius: 12px;
+    height: 48px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    
+    &[color="primary"] {
+      --background: #4285f4;
+      --color: #ffffff;
+      box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+    }
+  }
+  
+  .secondary-actions {
+    display: flex;
+    gap: 12px;
+    
+    ion-button {
+      flex: 1;
+      margin-bottom: 0;
+      height: 44px;
+      font-size: 14px;
+      
+      &[color="secondary"] {
+        --border-color: #9c27b0;
+        --color: #9c27b0;
+      }
+      
+      &[color="tertiary"] {
+        --border-color: #00bcd4;
+        --color: #00bcd4;
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .group-header .group-banner {
+    height: 200px;
+    
+    .group-overlay {
+      padding: 30px 16px 16px;
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      .group-stats {
+        gap: 16px;
+        
+        .stat {
+          font-size: 13px;
+          
+          ion-icon {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+  
+  .content-container {
+    padding: 0 12px 100px;
+  }
+  
+  .section-card {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .members-list .member-item {
+    padding: 10px;
+    
+    .member-avatar img {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .member-info {
+      h3 {
+        font-size: 15px;
+      }
+      
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+  
+  .schedule-list .schedule-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    
+    .schedule-time {
+      text-align: left;
+    }
+    
+    .schedule-status {
+      align-self: flex-end;
+    }
+  }
+  
+  .action-buttons {
+    .secondary-actions {
+      flex-direction: column;
+      gap: 8px;
+      
+      ion-button {
+        flex: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .group-header .group-banner {
+    height: 180px;
+    
+    .group-overlay {
+      h1 {
+        font-size: 20px;
+      }
+      
+      .subject {
+        font-size: 14px;
+      }
+      
+      .group-stats {
+        gap: 12px;
+        
+        .stat {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  
+  .section-card .section-header .section-title {
+    h2 {
+      font-size: 18px;
+    }
+  }
+}

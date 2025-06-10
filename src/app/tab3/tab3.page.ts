@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicModule, ModalController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { CrearGrupoComponent } from '../crear-grupo/crear-grupo.component';
 
 @Component({
@@ -14,28 +15,31 @@ export class Tab3Page {
   studyGroups = [
     {
       title: 'Calculus Study Group',
-      subject: 'MATH 201',
+      subject: 'MATH 201 • Matemáticas Avanzadas',
       image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
       active: 'Active 2 hours ago',
       members: 5
     },
     {
       title: 'Physics Lab Partners',
-      subject: 'PHYS 101',
+      subject: 'PHYS 101 • Física General',
       image: 'https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg',
       active: 'Active Yesterday',
       members: 3
     },
     {
       title: 'Programming Project Team',
-      subject: 'MATH 201',
+      subject: 'CS 201 • Programación Avanzada',
       image: 'https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg',
       active: 'Active just now',
       members: 4
     }
   ];
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private router: Router
+  ) {}
 
   async CREATEGROUP() {
     const modal = await this.modalCtrl.create({
@@ -48,5 +52,11 @@ export class Tab3Page {
     if (data) {
       this.studyGroups.unshift(data);
     }
+  }
+
+  viewGroupDetails(group: any) {
+    this.router.navigate(['/group-details'], {
+      state: { group: group }
+    });
   }
 }
