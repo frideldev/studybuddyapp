@@ -2,6 +2,20 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { ThemeService } from '../../services/theme.service';
+
+import { addIcons } from 'ionicons';
+import {
+  settingsOutline,
+  sunnyOutline,
+  moonOutline
+} from 'ionicons/icons';
+
+addIcons({
+  settingsOutline,
+  sunnyOutline,
+  moonOutline
+});
 
 @Component({
   selector: 'app-tab6',
@@ -11,25 +25,21 @@ import { IonicModule } from '@ionic/angular';
   imports: [CommonModule, FormsModule, IonicModule]
 })
 export class Tab6Page {
-  tabSixData: any = {};
-  configOptions: string = '';
-  isEnabled: boolean = false;
+  selectedTheme: 'light' | 'dark' | 'system' = 'system';
 
-  constructor() { }
+  constructor(private themeService: ThemeService) {}
 
-  SETUP_TAB() {
-    // Setup tab
+  ngOnInit() {
+    this.selectedTheme = this.themeService.getUserPreference();
   }
 
-  LOAD_CONFIG() {
-    // Load configuration
-  }
+  onThemeChange(theme: string) {
+    this.selectedTheme = theme as 'light' | 'dark' | 'system';
 
-  HANDLE_EVENTS() {
-    // Handle events
-  }
-
-  SAVE_SETTINGS() {
-    // Save settings
+    if (theme === 'system') {
+      this.themeService.clearUserPreference();
+    } else {
+      this.themeService.setUserTheme(theme as 'light' | 'dark');
+    }
   }
 }

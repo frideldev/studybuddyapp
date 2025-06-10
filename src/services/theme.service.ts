@@ -11,6 +11,7 @@ export class ThemeService {
   constructor() {
     this.applyTheme(this.getEffectiveTheme());
 
+    // Escucha cambios del sistema
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (!this.hasUserPreference()) {
         this.applyTheme(e.matches ? 'dark' : 'light');
@@ -30,7 +31,7 @@ export class ThemeService {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
-  private getEffectiveTheme(): 'dark' | 'light' {
+  public getEffectiveTheme(): 'dark' | 'light' {
     const stored = localStorage.getItem(this.storageKey);
     if (stored === 'dark' || stored === 'light') {
       return stored;
@@ -38,7 +39,15 @@ export class ThemeService {
     return this.getSystemTheme();
   }
 
-  private async applyTheme(theme: 'dark' | 'light'): Promise<void> {
+  public getUserPreference(): 'dark' | 'light' | 'system' {
+    const stored = localStorage.getItem(this.storageKey);
+    if (stored === 'dark' || stored === 'light') {
+      return stored;
+    }
+    return 'system';
+  }
+
+  public async applyTheme(theme: 'dark' | 'light'): Promise<void> {
     const isDark = theme === 'dark';
 
     document.documentElement.classList.remove('ion-palette-dark', 'ion-palette-light');
@@ -47,26 +56,20 @@ export class ThemeService {
     if (Capacitor.isNativePlatform()) {
       try {
         await StatusBar.setOverlaysWebView({ overlay: false });
-
-        await StatusBar.setBackgroundColor({
-          color: isDark ? '#061e19' : '#ffffff',
-        });
-
-        await StatusBar.setStyle({
-          style: isDark ? Style.Dark : Style.Light,
-        });
+        await StatusBar.setBackgroundColor({ color: isDark ? '#000000' : '#ffffff' });
+        await StatusBar.setStyle({ style: isDark ? Style.Dark : Style.Light });
       } catch (error) {
-        console.warn('Error al aplicar configuración de StatusBar:', error);
+        console.warn('StatusBar error:', error);
       }
     }
   }
 
-  setUserTheme(theme: 'dark' | 'light'): void {
+  public setUserTheme(theme: 'dark' | 'light'): void {
     localStorage.setItem(this.storageKey, theme);
     this.applyTheme(theme);
   }
 
-  clearUserPreference(): void {
+  public clearUserPreference(): void {
     localStorage.removeItem(this.storageKey);
     this.applyTheme(this.getSystemTheme());
   }
