@@ -1,0 +1,20 @@
+<ion-card class="analytics-card">
+  <ion-card-content>
+    <div class="card-content">
+      <div class="icon-container">
+        <app-analytics-icon 
+          [iconName]="cardData.icon" 
+          [iconColor]="GET_ICON_COLOR()">
+        </app-analytics-icon>
+      </div>
+      
+      <div class="value-container">
+        <span class="value-text">{{ cardData.value }}</span>
+      </div>
+      
+      <div class="label-container">
+        <span class="label-text">{{ cardData.label }}</span>
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>

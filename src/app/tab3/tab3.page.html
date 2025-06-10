@@ -7,7 +7,7 @@
 <ion-content color="dark" class="ion-padding">
   <div class="title-row">
     <h2>Study Groups</h2>
-    <ion-button size="small" color="primary">+ Create Group</ion-button>
+    <ion-button size="small" color="primary" (click)="CREATEGROUP()">+ Create Group</ion-button>
   </div>
 
   <div *ngFor="let group of studyGroups" class="group-card">
