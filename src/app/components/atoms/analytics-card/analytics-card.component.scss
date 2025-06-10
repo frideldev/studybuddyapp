@@ -1,42 +1,202 @@
-// src/app/components/atoms/analytics-card/analytics-card.component.scss
+// Analytics Card con paleta StudyBuddy unificada
 .analytics-card {
-  margin: 8px 0;
-  background: var(--ion-color-dark);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin: 12px 0;
+  background: var(--sb-gradient-card);
+  border-radius: 20px;
+  box-shadow: var(--sb-shadow-medium);
+  border: 1px solid var(--sb-border-light);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sb-shadow-large);
+    border-color: var(--sb-primary-blue);
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--sb-gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
   
   ion-card-content {
-    padding: 16px;
+    padding: 24px 20px;
+    background: transparent;
   }
 }
 
 .card-header {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
-  gap: 8px;
+  margin-bottom: 16px;
+  gap: 12px;
 }
 
 .card-icon {
-  font-size: 20px;
-  width: 20px;
-  height: 20px;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  
+  .analytics-card:hover & {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
 }
 
 .card-title {
-  font-size: 14px;
-  color: var(--ion-color-medium);
-  font-weight: 500;
+  font-size: 15px;
+  color: var(--sb-text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex: 1;
 }
 
 .card-value {
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--ion-color-light);
-  margin-bottom: 4px;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--sb-text-primary);
+  margin-bottom: 8px;
+  line-height: 1.2;
+  font-feature-settings: 'tnum';
 }
 
 .card-subtitle {
+  font-size: 13px;
+  color: var(--sb-text-tertiary);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+// Progress bar enhancement
+.progress-container {
+  margin-top: 16px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--sb-border-light);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.3) 50%, 
+      transparent 100%);
+    animation: shimmer 2s infinite;
+  }
+}
+
+.progress-text {
   font-size: 12px;
-  color: var(--ion-color-medium);
+  font-weight: 600;
+  color: var(--sb-text-secondary);
+  text-align: right;
+}
+
+// Color variants for different metrics
+.analytics-card {
+  &.streak-card {
+    .card-icon { color: var(--sb-warning); }
+    .progress-fill { background: linear-gradient(135deg, var(--sb-warning) 0%, #f57c00 100%); }
+  }
+  
+  &.percentage-card {
+    .card-icon { color: var(--sb-success); }
+    .progress-fill { background: linear-gradient(135deg, var(--sb-success) 0%, #2e7d32 100%); }
+  }
+  
+  &.hours-card {
+    .card-icon { color: var(--sb-primary-blue); }
+    .progress-fill { background: var(--sb-gradient-primary); }
+  }
+  
+  &.performance-card {
+    .card-icon { color: var(--sb-info); }
+    .progress-fill { background: linear-gradient(135deg, var(--sb-info) 0%, #1976d2 100%); }
+  }
+}
+
+// Animation for shimmer effect
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .analytics-card {
+    margin: 10px 0;
+    
+    ion-card-content {
+      padding: 20px 16px;
+    }
+    
+    .card-value {
+      font-size: 24px;
+    }
+    
+    .card-icon {
+      font-size: 22px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .analytics-card {
+    ion-card-content {
+      padding: 18px 14px;
+    }
+    
+    .card-header {
+      margin-bottom: 12px;
+      gap: 10px;
+    }
+    
+    .card-title {
+      font-size: 14px;
+    }
+    
+    .card-value {
+      font-size: 22px;
+    }
+    
+    .card-icon {
+      font-size: 20px;
+    }
+  }
 }

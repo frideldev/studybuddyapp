@@ -13,7 +13,30 @@ export class AppComponent {
   ) {}
 
   ngOnInit() {
+    // FORZAR tema oscuro por defecto
+    this.forceDarkTheme();
     this.themeService.initializeTheme();
   }
 
+  private forceDarkTheme() {
+    // Agregar clase dark a documentElement
+    document.documentElement.classList.add('ion-palette-dark');
+    
+    // FORZAR body dark
+    document.body.classList.add('dark');
+    document.body.style.background = '#121212';
+    document.body.style.color = '#ffffff';
+    
+    // Agregar clase personalizada
+    document.documentElement.classList.add('sb-dark-force');
+    
+    // FORZAR meta theme-color
+    let metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (!metaTheme) {
+      metaTheme = document.createElement('meta');
+      metaTheme.setAttribute('name', 'theme-color');
+      document.head.appendChild(metaTheme);
+    }
+    metaTheme.setAttribute('content', '#121212');
+  }
 }

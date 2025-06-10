@@ -11,14 +11,266 @@
     </ion-toolbar>
   </ion-header>
 
-  <div class="content-container">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Settings</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Settings content will go here.</p>
-      </ion-card-content>
-    </ion-card>
+  <div class="settings-container">
+    <!-- Profile Section -->
+    <div class="profile-section">
+      <div class="profile-card">
+        <div class="profile-avatar">
+          <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="Profile" />
+          <div class="profile-status online"></div>
+        </div>
+        <div class="profile-info">
+          <h3 class="profile-name">{{userName}}</h3>
+          <p class="profile-email">{{userEmail}}</p>
+          <span class="profile-badge">Premium</span>
+        </div>
+        <ion-button fill="clear" size="small" class="edit-profile-btn">
+          <ion-icon name="pencil-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Theme Section -->
+    <div class="settings-section">
+      <h4 class="section-title">
+        <ion-icon name="color-palette-outline"></ion-icon>
+        Theme
+      </h4>
+      
+      <div class="theme-options">
+        <div class="theme-option" [class.active]="selectedTheme === 'light'" (click)="SET_THEME('light')">
+          <div class="theme-preview light-theme">
+            <div class="theme-header"></div>
+            <div class="theme-content"></div>
+          </div>
+          <span class="theme-label">Light Mode</span>
+          <ion-icon name="checkmark-circle" *ngIf="selectedTheme === 'light'"></ion-icon>
+        </div>
+        
+        <div class="theme-option" [class.active]="selectedTheme === 'dark'" (click)="SET_THEME('dark')">
+          <div class="theme-preview dark-theme">
+            <div class="theme-header"></div>
+            <div class="theme-content"></div>
+          </div>
+          <span class="theme-label">Dark Mode</span>
+          <ion-icon name="checkmark-circle" *ngIf="selectedTheme === 'dark'"></ion-icon>
+        </div>
+        
+        <div class="theme-option" [class.active]="selectedTheme === 'system'" (click)="SET_THEME('system')">
+          <div class="theme-preview system-theme">
+            <div class="theme-header"></div>
+            <div class="theme-content"></div>
+          </div>
+          <span class="theme-label">System Default</span>
+          <ion-icon name="checkmark-circle" *ngIf="selectedTheme === 'system'"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notifications Section -->
+    <div class="settings-section">
+      <h4 class="section-title">
+        <ion-icon name="notifications-outline"></ion-icon>
+        Notifications
+      </h4>
+      
+      <div class="settings-list">
+        <div class="setting-item">
+          <div class="setting-info">
+            <ion-icon name="notifications" color="primary"></ion-icon>
+            <div class="setting-content">
+              <h5>Push Notifications</h5>
+              <p>Receive reminders for upcoming deadlines and events</p>
+            </div>
+          </div>
+          <ion-toggle 
+            [(ngModel)]="settings.pushNotifications" 
+            (ionChange)="SAVE_SETTINGS()">
+          </ion-toggle>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <ion-icon name="mail" color="secondary"></ion-icon>
+            <div class="setting-content">
+              <h5>Email Notifications</h5>
+              <p>Receive weekly summaries and important updates</p>
+            </div>
+          </div>
+          <ion-toggle 
+            [(ngModel)]="settings.emailNotifications" 
+            (ionChange)="SAVE_SETTINGS()">
+          </ion-toggle>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <ion-icon name="volume-high" color="success"></ion-icon>
+            <div class="setting-content">
+              <h5>Sound Effects</h5>
+              <p>Play sounds for notifications and actions</p>
+            </div>
+          </div>
+          <ion-toggle 
+            [(ngModel)]="settings.soundEffects" 
+            (ionChange)="SAVE_SETTINGS()">
+          </ion-toggle>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account Section -->
+    <div class="settings-section">
+      <h4 class="section-title">
+        <ion-icon name="person-outline"></ion-icon>
+        Account
+      </h4>
+      
+      <div class="settings-list">
+        <div class="setting-item clickable" (click)="EDIT_PROFILE()">
+          <div class="setting-info">
+            <ion-icon name="person" color="primary"></ion-icon>
+            <div class="setting-content">
+              <h5>Edit Profile</h5>
+              <p>Update your personal information</p>
+            </div>
+          </div>
+          <ion-icon name="chevron-forward" color="medium"></ion-icon>
+        </div>
+        
+        <div class="setting-item clickable" (click)="PRIVACY_SECURITY()">
+          <div class="setting-info">
+            <ion-icon name="shield-checkmark" color="success"></ion-icon>
+            <div class="setting-content">
+              <h5>Privacy & Security</h5>
+              <p>Manage your privacy settings and password</p>
+            </div>
+          </div>
+          <ion-icon name="chevron-forward" color="medium"></ion-icon>
+        </div>
+        
+        <div class="setting-item clickable" (click)="STORAGE_BACKUP()">
+          <div class="setting-info">
+            <ion-icon name="cloud" color="tertiary"></ion-icon>
+            <div class="setting-content">
+              <h5>Storage & Backup</h5>
+              <p>Sync data across devices</p>
+            </div>
+          </div>
+          <ion-icon name="chevron-forward" color="medium"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Study Preferences Section -->
+    <div class="settings-section">
+      <h4 class="section-title">
+        <ion-icon name="school-outline"></ion-icon>
+        Study Preferences
+      </h4>
+      
+      <div class="settings-list">
+        <div class="setting-item">
+          <div class="setting-info">
+            <ion-icon name="time" color="warning"></ion-icon>
+            <div class="setting-content">
+              <h5>Focus Mode</h5>
+              <p>Block distracting apps during study sessions</p>
+            </div>
+          </div>
+          <ion-toggle 
+            [(ngModel)]="settings.focusMode" 
+            (ionChange)="SAVE_SETTINGS()">
+          </ion-toggle>
+        </div>
+        
+        <div class="setting-item clickable" (click)="STUDY_GOALS()">
+          <div class="setting-info">
+            <ion-icon name="trophy" color="warning"></ion-icon>
+            <div class="setting-content">
+              <h5>Study Goals</h5>
+              <p>Set daily and weekly study targets</p>
+            </div>
+          </div>
+          <ion-icon name="chevron-forward" color="medium"></ion-icon>
+        </div>
+        
+        <div class="setting-item clickable" (click)="BREAK_REMINDERS()">
+          <div class="setting-info">
+            <ion-icon name="refresh" color="medium"></ion-icon>
+            <div class="setting-content">
+              <h5>Break Reminders</h5>
+              <p>Get reminded to take regular breaks</p>
+            </div>
+          </div>
+          <ion-icon name="chevron-forward" color="medium"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- App Section -->
+    <div class="settings-section">
+      <h4 class="section-title">
+        <ion-icon name="apps-outline"></ion-icon>
+        App
+      </h4>
+      
+      <div class="settings-list">
+        <div class="setting-item clickable" (click)="ABOUT_APP()">
+          <div class="setting-info">
+            <ion-icon name="information-circle" color="primary"></ion-icon>
+            <div class="setting-content">
+              <h5>About StudyBuddy</h5>
+              <p>Version 1.0.0 • Learn more about the app</p>
+            </div>
+          </div>
+          <ion-icon name="chevron-forward" color="medium"></ion-icon>
+        </div>
+        
+        <div class="setting-item clickable" (click)="HELP_SUPPORT()">
+          <div class="setting-info">
+            <ion-icon name="help-circle" color="secondary"></ion-icon>
+            <div class="setting-content">
+              <h5>Help & Support</h5>
+              <p>Get help or contact support team</p>
+            </div>
+          </div>
+          <ion-icon name="chevron-forward" color="medium"></ion-icon>
+        </div>
+        
+        <div class="setting-item clickable" (click)="RATE_APP()">
+          <div class="setting-info">
+            <ion-icon name="star" color="warning"></ion-icon>
+            <div class="setting-content">
+              <h5>Rate StudyBuddy</h5>
+              <p>Share your feedback in the app store</p>
+            </div>
+          </div>
+          <ion-icon name="chevron-forward" color="medium"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sign Out Section -->
+    <div class="settings-section">
+      <div class="settings-list">
+        <div class="setting-item clickable danger" (click)="SIGN_OUT()">
+          <div class="setting-info">
+            <ion-icon name="log-out" color="danger"></ion-icon>
+            <div class="setting-content">
+              <h5>Sign Out</h5>
+              <p>Sign out of your StudyBuddy account</p>
+            </div>
+          </div>
+          <ion-icon name="chevron-forward" color="medium"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="settings-footer">
+      <p>StudyBuddy v1.0.0</p>
+      <p>Made with ❤️ for students</p>
+    </div>
   </div>
 </ion-content>

@@ -35,3 +35,338 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 @import "@ionic/angular/css/palettes/dark.class.css";
 // @import '@ionic/angular/css/palettes/dark.system.css';
+
+/**
+ * StudyBuddy Global Styles
+ * -----------------------------------------------------
+ * Estilos globales para mantener consistencia en toda la app
+ */
+
+// Estilos globales para elementos Ionic
+ion-button {
+  --border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+  &:not([fill]) {
+    --background: var(--sb-gradient-primary);
+    --color: white;
+    box-shadow: var(--sb-shadow-blue);
+    
+    &:hover {
+      --background: var(--sb-accent-blue);
+      transform: translateY(-2px);
+    }
+  }
+  
+  &[fill="outline"] {
+    --border-width: 2px;
+    --border-color: var(--sb-primary-blue);
+    --color: var(--sb-primary-blue);
+    --background: transparent;
+    
+    &:hover {
+      --background: rgba(64, 125, 255, 0.1);
+      --border-color: var(--sb-accent-blue);
+    }
+  }
+  
+  &[fill="clear"] {
+    --color: var(--sb-primary-blue);
+    
+    &:hover {
+      --background: rgba(64, 125, 255, 0.1);
+    }
+  }
+}
+
+// Cards globales
+ion-card {
+  --background: var(--sb-gradient-card);
+  --color: var(--sb-text-primary);
+  border: 1px solid var(--sb-border-light);
+  border-radius: 16px;
+  box-shadow: var(--sb-shadow-medium);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sb-shadow-large);
+    border-color: var(--sb-primary-blue);
+  }
+  
+  ion-card-header {
+    padding-bottom: 8px;
+    
+    ion-card-title {
+      color: var(--sb-text-primary);
+      font-weight: 700;
+    }
+    
+    ion-card-subtitle {
+      color: var(--sb-text-secondary);
+    }
+  }
+}
+
+// Items globales
+ion-item {
+  --background: var(--sb-card-bg);
+  --color: var(--sb-text-primary);
+  --border-color: var(--sb-border-light);
+  --inner-border-width: 0;
+  --border-width: 0;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  ion-label {
+    color: var(--sb-text-primary);
+    
+    h2 {
+      color: var(--sb-text-primary);
+      font-weight: 600;
+    }
+    
+    h3 {
+      color: var(--sb-text-secondary);
+    }
+    
+    p {
+      color: var(--sb-text-tertiary);
+    }
+  }
+}
+
+// Toast personalizado
+.custom-toast {
+  --background: var(--sb-card-bg);
+  --color: var(--sb-text-primary);
+  --border-radius: 12px;
+  --border: 1px solid var(--sb-border-light);
+  --box-shadow: var(--sb-shadow-medium);
+}
+
+// Loading spinner
+ion-loading {
+  --background: var(--sb-card-bg);
+  --color: var(--sb-text-primary);
+  --spinner-color: var(--sb-primary-blue);
+}
+
+// Alert personalizado
+ion-alert {
+  --background: var(--sb-card-bg);
+  --color: var(--sb-text-primary);
+  --border-radius: 16px;
+  
+  .alert-head {
+    background: var(--sb-gradient-secondary);
+    border-bottom: 1px solid var(--sb-border-light);
+  }
+  
+  .alert-title {
+    color: var(--sb-text-primary);
+    font-weight: 700;
+  }
+  
+  .alert-message {
+    color: var(--sb-text-secondary);
+  }
+  
+  .alert-button {
+    color: var(--sb-primary-blue);
+    font-weight: 600;
+    
+    &.alert-button-role-destructive {
+      color: var(--sb-danger);
+    }
+    
+    &.alert-button-role-cancel {
+      color: var(--sb-text-secondary);
+    }
+  }
+}
+
+// Popover personalizado
+ion-popover {
+  --background: var(--sb-card-bg);
+  --color: var(--sb-text-primary);
+  --border-radius: 12px;
+  --box-shadow: var(--sb-shadow-large);
+}
+
+// Modal personalizado
+ion-modal {
+  --background: var(--sb-primary-bg);
+  --color: var(--sb-text-primary);
+  
+  &.sheet-modal {
+    --border-radius: 16px 16px 0 0;
+    --background: var(--sb-gradient-card);
+  }
+}
+
+// Searchbar personalizado
+ion-searchbar {
+  --background: var(--sb-card-bg);
+  --color: var(--sb-text-primary);
+  --placeholder-color: var(--sb-text-secondary);
+  --icon-color: var(--sb-text-secondary);
+  --clear-button-color: var(--sb-text-secondary);
+  --border-radius: 12px;
+  
+  .searchbar-input-container {
+    background: var(--sb-card-bg);
+    border: 1px solid var(--sb-border-light);
+    border-radius: 12px;
+    
+    &:hover {
+      border-color: var(--sb-primary-blue);
+    }
+  }
+}
+
+// Segment personalizado
+ion-segment {
+  --background: var(--sb-card-bg);
+  border: 1px solid var(--sb-border-light);
+  border-radius: 12px;
+  
+  ion-segment-button {
+    --background: transparent;
+    --background-checked: var(--sb-gradient-primary);
+    --color: var(--sb-text-secondary);
+    --color-checked: white;
+    --border-radius: 8px;
+    margin: 4px;
+    font-weight: 600;
+  }
+}
+
+// Utilities classes
+.text-gradient {
+  background: var(--sb-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sb-shadow-large);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(64, 125, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(64, 125, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(64, 125, 255, 0);
+  }
+}
+
+// Scrollbar personalizado (webkit)
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sb-border-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sb-primary-blue);
+  border-radius: 3px;
+  
+  &:hover {
+    background: var(--sb-accent-blue);
+  }
+}
+
+// Focus states mejorados
+*:focus-visible {
+  outline: 2px solid var(--sb-primary-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+// Selection personalizada
+::selection {
+  background: rgba(64, 125, 255, 0.3);
+  color: var(--sb-text-primary);
+}
+
+// Typography improvements
+h1, h2, h3, h4, h5, h6 {
+  color: var(--sb-text-primary);
+  font-weight: 700;
+}
+
+p {
+  color: var(--sb-text-secondary);
+  line-height: 1.6;
+}
+
+// Error and success states
+.error-message {
+  color: var(--sb-danger);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  &::before {
+    content: '⚠️';
+  }
+}
+
+.success-message {
+  color: var(--sb-success);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  &::before {
+    content: '✅';
+  }
+}
+
+// Loading states
+.loading-skeleton {
+  background: linear-gradient(90deg, 
+    var(--sb-border-light) 25%, 
+    var(--sb-border-medium) 50%, 
+    var(--sb-border-light) 75%);
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
