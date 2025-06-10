@@ -1,6 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Analytics</ion-title>
+    <ion-title>Analytics</ion-title>
     <ion-buttons slot="end">
       <ion-button 
         fill="clear" 
@@ -11,6 +12,12 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-content [fullscreen]="true" class="analytics-content">
+  <div class="analytics-container">
+    <app-analytics-card 
+      [cardData]="studyStreakCard"
+      *ngIf="studyStreakCard">
+    </app-analytics-card>
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>

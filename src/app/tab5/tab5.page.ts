@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+// Actualizar: tab5/tab5.page.ts
+
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { AnalyticsCard } from './models/analytics.model';
+import { AnalyticsService } from './services/analytics.service';
+import { AnalyticsCardComponent } from './components/molecules/analytics-card/analytics-card.component';
 
 interface StudySession {
   date: string;
@@ -25,11 +29,26 @@ interface SubjectData {
 
 @Component({
   selector: 'app-tab5',
-  templateUrl: './tab5.page.html',
-  styleUrls: ['./tab5.page.scss'],
+  templateUrl: 'tab5.page.html',
+  styleUrls: ['tab5.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule]
+  imports: [
+    CommonModule,
+    IonicModule,
+    AnalyticsCardComponent
+  ]
 })
+export class Tab5Page implements OnInit {
+  studyStreakCard!: AnalyticsCard;
+
+  constructor(private analyticsService: AnalyticsService) {}
+
+  ngOnInit() {
+    this.LOAD_ANALYTICS_DATA();
+  }
+
+  private LOAD_ANALYTICS_DATA(): void {
+    this.studyStreakCard = this.analyticsService.GET_STUDY_STREAK_CARD();
 export class Tab5Page {
   totalStudyHours: number = 0;
   weeklyGoal: number = 0;
