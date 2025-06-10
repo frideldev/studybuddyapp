@@ -1,84 +1,96 @@
-// Tasks Container
+// Tasks Container & General
 .tasks-container {
   padding: 16px;
-  background-color: var(--ion-color-dark);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   min-height: 100vh;
 }
 
-// Header Toolbar Styles
+ion-content {
+  --background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  --color: #ffffff;
+}
+
+// Header & Navigation
 ion-toolbar {
-  --background: var(--ion-color-dark);
-  --color: var(--ion-color-light);
+  --background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  --color: #ffffff;
+  border-bottom: 1px solid #333;
 }
 
 ion-title {
   font-weight: 600;
   font-size: 24px;
-  color: var(--ion-color-light);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
-// Add Task Button
 .add-task-btn {
-  --background: #007AFF;
+  --background: linear-gradient(135deg, #4285f4 0%, #0d73ff 100%);
   --color: white;
-  --border-radius: 8px;
+  --border-radius: 12px;
   margin-right: 8px;
-  height: 36px;
-  font-weight: 500;
+  height: 38px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
   
-  ion-icon {
-    font-size: 18px;
-  }
+  ion-icon { font-size: 18px; }
 }
 
-// Search Bar
+// Search & Filters
 .tasks-searchbar {
-  --background: #2a2a2a;
-  --color: var(--ion-color-light);
-  --placeholder-color: #8c8c8c;
-  --icon-color: #8c8c8c;
-  --border-radius: 12px;
-  margin-bottom: 16px;
+  --background: linear-gradient(135deg, #2a2a2a 0%, #333333 100%);
+  --color: #ffffff;
+  --placeholder-color: #9ca3af;
+  --icon-color: #6b7280;
+  --border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   
   .searchbar-input {
-    --background: #2a2a2a !important;
-    --color: var(--ion-color-light) !important;
-    border: 1px solid #3a3a3a;
-    border-radius: 12px;
-  }
-  
-  .searchbar-search-icon {
-    color: #8c8c8c !important;
+    --background: transparent !important;
+    --color: #ffffff !important;
+    border: 1px solid #404040;
+    border-radius: 16px;
   }
 }
 
-// Filter Buttons
 .filter-buttons {
   display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 24px;
   align-items: center;
 }
 
 .filter-btn {
-  --border-radius: 20px;
-  height: 36px;
+  --border-radius: 24px;
+  height: 40px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: none;
+  
+  &[fill="solid"] {
+    --background: linear-gradient(135deg, #4285f4 0%, #0d73ff 100%);
+    --color: white;
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+  }
+  
+  &[fill="outline"] {
+    --background: rgba(255, 255, 255, 0.05);
+    --color: #9ca3af;
+    --border-color: #404040;
+    --border-style: solid;
+    --border-width: 1px;
+  }
   
   ion-icon {
     font-size: 16px;
-    margin-right: 4px;
+    margin-right: 6px;
   }
 }
 
-// Tasks List Area
-.tasks-list-area {
-  margin-top: 8px;
-}
-
 // Tasks List
+.tasks-list-area { margin-top: 8px; }
+
 .tasks-list {
   display: flex;
   flex-direction: column;
@@ -87,82 +99,110 @@ ion-title {
 
 .task-card {
   position: relative;
-  background-color: #2a2a2a;
-  border-radius: 12px;
-  padding: 16px;
-  border: 1px solid #3a3a3a;
+  background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #333333;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4285f4, #34a853, #fbbc04, #ea4335);
+    opacity: 0.6;
+  }
   
   .delete-btn {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    --padding-start: 4px;
-    --padding-end: 4px;
-    width: 28px;
-    height: 28px;
+    top: 12px;
+    right: 12px;
+    --padding-start: 6px;
+    --padding-end: 6px;
+    width: 32px;
+    height: 32px;
+    --background: rgba(239, 68, 68, 0.1);
+    --border-radius: 50%;
     
     ion-icon {
       font-size: 18px;
+      color: #ef4444;
     }
   }
   
   .task-content {
-    padding-right: 24px;
+    padding-right: 36px;
     
     .task-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       
       .task-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--ion-color-light);
+        font-size: 18px;
+        font-weight: 700;
+        color: #ffffff;
         margin: 0;
         line-height: 1.3;
       }
       
       .task-priority {
-        margin-left: 8px;
+        margin-left: 12px;
+        padding: 4px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         
-        &.priority-high ion-icon {
-          color: #FF3B30;
+        &.priority-high {
+          background: rgba(239, 68, 68, 0.15);
+          ion-icon { color: #ef4444; }
         }
         
-        &.priority-medium ion-icon {
-          color: #FFCC00;
+        &.priority-medium {
+          background: rgba(245, 158, 11, 0.15);
+          ion-icon { color: #f59e0b; }
         }
         
-        &.priority-low ion-icon {
-          color: #34C759;
+        &.priority-low {
+          background: rgba(34, 197, 94, 0.15);
+          ion-icon { color: #22c55e; }
         }
         
-        ion-icon {
-          font-size: 16px;
-        }
+        ion-icon { font-size: 18px; }
       }
     }
     
     .task-subject {
-      color: #8c8c8c;
+      color: #9ca3af;
       font-size: 14px;
-      margin: 0 0 12px 0;
+      margin: 0 0 16px 0;
+      font-weight: 500;
     }
     
     .task-details {
       display: flex;
-      gap: 16px;
+      gap: 20px;
       font-size: 13px;
-      color: #8c8c8c;
+      color: #6b7280;
+      font-weight: 500;
       
       .task-date, .task-duration {
         display: flex;
         align-items: center;
-        gap: 4px;
+        gap: 6px;
+        padding: 6px 10px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
         
         ion-icon {
           font-size: 14px;
+          color: #4285f4;
         }
       }
     }
@@ -172,122 +212,110 @@ ion-title {
 // Empty State
 .empty-tasks-message {
   text-align: center;
-  margin-top: 60px;
-  color: #8c8c8c;
+  margin-top: 80px;
+  color: #6b7280;
   
   .empty-icon {
-    font-size: 64px;
-    color: #4a4a4a;
-    margin-bottom: 16px;
+    font-size: 72px;
+    color: #374151;
+    margin-bottom: 20px;
+    opacity: 0.7;
   }
   
   p {
-    margin: 8px 0;
-    font-size: 16px;
+    margin: 12px 0;
+    font-size: 18px;
+    font-weight: 600;
     
     &.empty-subtitle {
       font-size: 14px;
-      color: #6c6c6c;
-    }
-  }
-}
-
-// General Styling
-ion-content {
-  --background: var(--ion-color-dark);
-  --color: var(--ion-color-light);
-}
-
-// Dark theme support
-:host-context(.ion-palette-dark) {
-  .tasks-container {
-    background-color: #1a1a1a;
-  }
-  
-  .tasks-searchbar {
-    --background: #2a2a2a;
-    
-    .searchbar-input {
-      --background: #2a2a2a !important;
-    }
-  }
-}
-
-// Add Task Modal Styles
-.add-task-modal-content {
-  --background: #1a1a1a;
-  --color: var(--ion-color-light);
-  padding: 16px;
-}
-
-.form-item {
-  --background: #2a2a2a;
-  --color: var(--ion-color-light);
-  --border-color: #3a3a3a;
-  border-radius: 8px;
-  margin-bottom: 16px;
-  
-  ion-label {
-    color: #e0e0e0;
-    font-weight: 500;
-    margin-bottom: 4px;
-  }
-  
-  ion-input, ion-select {
-    --color: var(--ion-color-light);
-    --placeholder-color: #8c8c8c;
-  }
-}
-
-.date-time-group {
-  display: flex;
-  gap: 12px;
-  
-  .half-width {
-    flex: 1;
-  }
-}
-
-.duration-group {
-  display: flex;
-  gap: 12px;
-  align-items: end;
-  
-  .duration-input {
-    flex: 1;
-  }
-  
-  .duration-unit {
-    width: 120px;
-  }
-}
-
-.priority-section {
-  margin: 20px 0;
-  
-  .section-label {
-    display: block;
-    color: #e0e0e0;
-    font-weight: 500;
-    margin-bottom: 12px;
-    font-size: 14px;
-  }
-  
-  .priority-buttons {
-    display: flex;
-    gap: 8px;
-    
-    ion-button {
-      flex: 1;
-      text-transform: none;
+      color: #4b5563;
       font-weight: 500;
     }
   }
 }
 
+// Modal Styles
+.add-task-modal-content {
+  --background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  --color: #ffffff;
+  padding: 20px;
+}
+
+.form-item {
+  --background: linear-gradient(135deg, #2a2a2a 0%, #333333 100%);
+  --color: #ffffff;
+  --border-color: #404040;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  
+  ion-label {
+    color: #e5e7eb;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  ion-input, ion-select {
+    --color: #ffffff;
+    --placeholder-color: #9ca3af;
+  }
+}
+
+.date-time-group {
+  display: flex;
+  gap: 16px;
+  
+  .half-width { flex: 1; }
+}
+
+.duration-group {
+  display: flex;
+  gap: 16px;
+  align-items: end;
+  
+  .duration-input { flex: 1; }
+  .duration-unit { width: 130px; }
+}
+
+.priority-section {
+  margin: 24px 0;
+  
+  .section-label {
+    display: block;
+    color: #e5e7eb;
+    font-weight: 600;
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+  
+  .priority-buttons {
+    display: flex;
+    gap: 12px;
+    
+    ion-button {
+      flex: 1;
+      text-transform: none;
+      font-weight: 600;
+      --border-radius: 12px;
+      height: 44px;
+    }
+  }
+}
+
 .modal-actions {
-  margin-top: 32px;
+  margin-top: 36px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+  
+  ion-button {
+    height: 48px;
+    font-weight: 600;
+    --border-radius: 12px;
+    
+    &[color="primary"] {
+      --background: linear-gradient(135deg, #4285f4 0%, #0d73ff 100%);
+      box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+    }
+  }
 }
