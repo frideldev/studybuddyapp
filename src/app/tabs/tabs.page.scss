@@ -1,12 +1,338 @@
-ion-tab-bar {
-  --background: var(--ion-color-primary);
-  --color: var(--ion-color-primary-contrast);
+// Navegación inferior ARREGLADA - Forzando iconos y estilos
+.custom-tab-bar {
+  --background: #1e1e1e !important;
+  --color: #888888 !important;
+  --border: 1px solid #333333 !important;
+  background: #1e1e1e !important; // Backup
+  border-top: 1px solid #333333 !important;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  height: 70px;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      #407dff 20%, 
+      #0d73ff 50%, 
+      #407dff 80%, 
+      transparent 100%);
+    opacity: 0.6;
+  }
 }
 
-ion-tab-button {
-  --color-selected: var(--ion-color-secondary);
+.custom-tab-button {
+  --color: #888888 !important;
+  --color-selected: #407dff !important;
+  --background-focused: rgba(64, 125, 255, 0.1) !important;
+  color: #888888 !important; // Backup
+  background: transparent !important;
+  padding: 8px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  // FORZAR estilos en los elementos internos
+  .tab-button-native {
+    background: transparent !important;
+    color: #888888 !important;
+  }
+  
+  // Efecto hover
+  &:hover {
+    --color: #acacac !important;
+    color: #acacac !important; // Backup
+    transform: translateY(-1px);
+    
+    .tab-button-native {
+      color: #acacac !important;
+    }
+    
+    ion-icon {
+      color: #acacac !important;
+    }
+  }
+  
+  // Estado seleccionado - FORZAR todos los estilos
+  &.tab-selected,
+  &[aria-selected="true"] {
+    --color: #407dff !important;
+    --background: rgba(64, 125, 255, 0.05) !important;
+    color: #407dff !important; // Backup
+    background: rgba(64, 125, 255, 0.05) !important; // Backup
+    
+    .tab-button-native {
+      color: #407dff !important;
+      background: rgba(64, 125, 255, 0.05) !important;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 32px;
+      height: 3px;
+      background: linear-gradient(135deg, #407dff 0%, #0d73ff 100%);
+      border-radius: 0 0 2px 2px;
+      animation: slideIn 0.3s ease-out;
+    }
+    
+    ion-icon {
+      animation: bounce 0.5s ease-out;
+      filter: drop-shadow(0 0 8px rgba(64, 125, 255, 0.4));
+      color: #407dff !important; // FORZAR color azul
+    }
+    
+    ion-label {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #407dff !important; // FORZAR color azul
+    }
+  }
+  
+  // FORZAR iconos para que aparezcan
+  ion-icon {
+    font-size: 24px !important;
+    margin-bottom: 4px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #888888 !important; // FORZAR color por defecto
+    display: block !important; // FORZAR que se muestre
+    opacity: 1 !important; // FORZAR opacidad
+    
+    // Fallback para iconos que no cargan
+    &::before {
+      font-family: 'Ionicons' !important;
+      font-style: normal;
+      font-weight: normal;
+      speak: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+  
+  // FORZAR labels
+  ion-label {
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 2px;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    color: #888888 !important; // FORZAR color por defecto
+    display: block !important; // FORZAR que se muestre
+  }
+  
+  // Efectos específicos por tab con colores únicos
+  &[tab="home"] {
+    &.tab-selected,
+    &[aria-selected="true"] {
+      ion-icon {
+        color: #407dff !important;
+      }
+      ion-label {
+        color: #407dff !important;
+      }
+    }
+  }
+  
+  &[tab="tab1"] {
+    &.tab-selected,
+    &[aria-selected="true"] {
+      ion-icon {
+        color: #4caf50 !important;
+      }
+      ion-label {
+        color: #4caf50 !important;
+      }
+      &::before {
+        background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+      }
+    }
+  }
+  
+  &[tab="tab2"] {
+    &.tab-selected,
+    &[aria-selected="true"] {
+      ion-icon {
+        color: #2196f3 !important;
+      }
+      ion-label {
+        color: #2196f3 !important;
+      }
+      &::before {
+        background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+      }
+    }
+  }
+  
+  &[tab="tab3"] {
+    &.tab-selected,
+    &[aria-selected="true"] {
+      ion-icon {
+        color: #ff9800 !important;
+      }
+      ion-label {
+        color: #ff9800 !important;
+      }
+      &::before {
+        background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+      }
+    }
+  }
+  
+  &[tab="tab4"] {
+    &.tab-selected,
+    &[aria-selected="true"] {
+      ion-icon {
+        color: #acacac !important;
+      }
+      ion-label {
+        color: #acacac !important;
+      }
+      &::before {
+        background: linear-gradient(135deg, #acacac 0%, #888888 100%);
+      }
+    }
+  }
+  
+  &[tab="tab5"] {
+    &.tab-selected,
+    &[aria-selected="true"] {
+      ion-icon {
+        color: #f44336 !important;
+      }
+      ion-label {
+        color: #f44336 !important;
+      }
+      &::before {
+        background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+      }
+    }
+  }
 }
 
-ion-tab-button.tab-selected {
-  --color: var(--ion-color-secondary);
+// OVERRIDE específico para cada icono por si no cargan
+ion-tab-button[tab="home"] ion-icon[name="home"]::before {
+  content: "\f384"; // Código Unicode para home
+}
+
+ion-tab-button[tab="tab1"] ion-icon[name="checkbox"]::before {
+  content: "\f374"; // Código Unicode para checkbox
+}
+
+ion-tab-button[tab="tab2"] ion-icon[name="calendar"]::before {
+  content: "\f215"; // Código Unicode para calendar
+}
+
+ion-tab-button[tab="tab3"] ion-icon[name="people"]::before {
+  content: "\f47c"; // Código Unicode para people
+}
+
+ion-tab-button[tab="tab4"] ion-icon[name="settings"]::before {
+  content: "\f493"; // Código Unicode para settings
+}
+
+ion-tab-button[tab="tab5"] ion-icon[name="analytics"]::before {
+  content: "\f394"; // Código Unicode para analytics
+}
+
+// Animaciones
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 32px;
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-3px);
+  }
+  60% {
+    transform: translateY(-1px);
+  }
+}
+
+// FORZAR en modo iOS y Material Design
+.ios,
+.md {
+  .custom-tab-bar {
+    --background: #1e1e1e !important;
+    background: #1e1e1e !important;
+  }
+  
+  .custom-tab-button {
+    --color: #888888 !important;
+    --color-selected: #407dff !important;
+    color: #888888 !important;
+    
+    &.tab-selected,
+    &[aria-selected="true"] {
+      --color: #407dff !important;
+      color: #407dff !important;
+      
+      ion-icon {
+        color: #407dff !important;
+      }
+      
+      ion-label {
+        color: #407dff !important;
+      }
+    }
+    
+    ion-icon {
+      color: #888888 !important;
+    }
+    
+    ion-label {
+      color: #888888 !important;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 480px) {
+  .custom-tab-bar {
+    height: 65px;
+  }
+  
+  .custom-tab-button {
+    padding: 6px 0;
+    
+    ion-icon {
+      font-size: 22px !important;
+    }
+    
+    ion-label {
+      font-size: 10px;
+    }
+  }
+}
+
+// Fallback adicional si nada funciona
+ion-icon {
+  visibility: visible !important;
+  display: inline-block !important;
+}
+
+// Override general para forzar visibilidad de iconos
+ion-tab-button ion-icon {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline-block !important;
 }

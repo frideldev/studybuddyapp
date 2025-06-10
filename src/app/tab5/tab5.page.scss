@@ -1,78 +1,565 @@
-.analytics-content {
-  --background: #121212;
-  
-  ion-toolbar {
-    --background: #1e1e1e;
-    --color: #ffffff;
+// Tab 5 - Analytics Page ARREGLADO - Forzando tema oscuro
+:host {
+  // FORZAR tema oscuro en todo el componente
+  ion-content {
+    --background: #121212 !important;
+    --color: #ffffff !important;
+    background: #121212 !important; // Backup color
   }
 }
 
-.analytics-container {
-  padding: 16px;
-  display: flex;
-  justify-content: center;
+ion-content {
+  --background: #121212 !important;
+  --color: #ffffff !important;
+  background: #121212 !important; // Backup
+}
+
+ion-toolbar {
+  --background: #1e1e1e !important;
+  --color: #ffffff !important;
+  background: #1e1e1e !important; // Backup
+  color: #ffffff !important; // Backup
+  border-bottom: 1px solid #333333;
+}
+
+ion-title {
+  font-weight: 600;
+  font-size: 24px;
+  color: #ffffff !important; // FORZAR color blanco
+}
+
+// Export button in header - FORZAR estilos
+ion-buttons ion-button {
+  --background: rgba(64, 125, 255, 0.1) !important;
+  --color: #407dff !important;
+  --border-radius: 12px;
+  transition: all 0.3s ease;
   
-  app-analytics-card {
-    max-width: 200px;
-    width: 100%;
+  &:hover {
+    --background: rgba(64, 125, 255, 0.2) !important;
+    transform: translateY(-2px);
+  }
+  
+  ion-icon {
+    font-size: 20px;
+    color: #407dff !important;
   }
 }
 
+// Stats Grid - FORZAR contenedor
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 16px;
-  padding: 16px;
+  padding: 20px 16px 0;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #121212 !important; // FORZAR fondo oscuro
 }
 
+// FORZAR estilos en stat cards globalmente
+app-stat-card {
+  display: block;
+  
+  // Penetrar en el shadow DOM del componente
+  ::ng-deep {
+    .stat-card {
+      background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%) !important;
+      border: 1px solid #333333 !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+      border-radius: 16px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3) !important;
+        border-color: #407dff !important;
+      }
+      
+      ion-card-content {
+        padding: 20px 16px;
+        background: transparent !important;
+      }
+      
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      
+      .card-title {
+        font-size: 14px;
+        color: #acacac !important;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        flex: 1;
+      }
+      
+      .card-value {
+        font-size: 24px;
+        font-weight: 800;
+        color: #ffffff !important;
+        line-height: 1.2;
+      }
+      
+      ion-icon {
+        font-size: 20px;
+        transition: all 0.3s ease;
+        
+        &[color="primary"] { color: #407dff !important; }
+        &[color="success"] { color: #4caf50 !important; }
+        &[color="warning"] { color: #ff9800 !important; }
+        &[color="danger"] { color: #f44336 !important; }
+      }
+    }
+  }
+}
+
+// Charts Section - FORZAR fondo
 .charts-section {
-  padding: 16px;
+  padding: 20px 16px;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #121212 !important; // FORZAR fondo oscuro
+  
+  // Chart component spacing
+  app-chart {
+    margin-bottom: 24px;
+    display: block;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    // FORZAR estilos en charts
+    ::ng-deep {
+      .chart-container {
+        background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%) !important;
+        border: 1px solid #333333 !important;
+        border-radius: 20px;
+        padding: 24px;
+        margin: 20px 0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        
+        .chart-title {
+          color: #ffffff !important;
+          font-weight: 700;
+        }
+        
+        .chart-content {
+          background: #121212 !important;
+          border: 1px solid #333333 !important;
+        }
+        
+        .bar-label {
+          color: #acacac !important;
+        }
+        
+        .bar-value {
+          color: #ffffff !important;
+          background: rgba(64, 125, 255, 0.1) !important;
+          border: 1px solid rgba(64, 125, 255, 0.2) !important;
+        }
+      }
+    }
+  }
 }
 
-.sessions-card {
+// Analytics Cards - FORZAR estilos
+app-analytics-card {
   margin: 16px;
-  background: var(--ion-color-dark);
+  display: block;
+  
+  &:first-child {
+    margin-top: 20px;
+  }
+  
+  // FORZAR estilos internos
+  ::ng-deep {
+    .analytics-card {
+      background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%) !important;
+      border: 1px solid #333333 !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+      
+      &:hover {
+        border-color: #407dff !important;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3) !important;
+      }
+      
+      ion-card-content {
+        background: transparent !important;
+      }
+      
+      .card-title {
+        color: #acacac !important;
+      }
+      
+      .card-value {
+        color: #ffffff !important;
+      }
+      
+      .card-subtitle {
+        color: #888888 !important;
+      }
+      
+      .card-icon {
+        &[color="primary"] { color: #407dff !important; }
+        &[color="success"] { color: #4caf50 !important; }
+        &[color="warning"] { color: #ff9800 !important; }
+        &[color="danger"] { color: #f44336 !important; }
+      }
+    }
+  }
 }
 
+// Sessions Card - FORZAR tema oscuro completo
+.sessions-card {
+  margin: 20px 16px;
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%) !important;
+  border: 1px solid #333333 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  
+  ion-card-header {
+    background: #1e1e1e !important;
+    border-bottom: 1px solid #333333 !important;
+    padding: 20px 24px 16px;
+    
+    ion-card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff !important; // FORZAR texto blanco
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      
+      &::before {
+        content: '📊';
+        font-size: 24px;
+      }
+    }
+  }
+  
+  ion-card-content {
+    padding: 24px;
+    background: #1e1e1e !important; // FORZAR fondo oscuro
+  }
+}
+
+// Session Items - FORZAR tema oscuro
 .session-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--ion-color-medium);
-}
-
-.session-item:last-child {
-  border-bottom: none;
+  padding: 16px 20px;
+  background: #121212 !important; // FORZAR fondo muy oscuro
+  border-radius: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #333333 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    background: #2a2a2a !important; // FORZAR hover oscuro
+    border-color: #407dff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(135deg, #407dff 0%, #0d73ff 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
 }
 
 .session-info {
+  flex: 1;
+  
   .session-subject {
-    font-weight: 600;
-    color: var(--ion-color-light);
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff !important; // FORZAR texto blanco
+    margin: 0 0 4px 0;
+    line-height: 1.3;
   }
   
   .session-date {
-    font-size: 12px;
-    color: var(--ion-color-medium);
+    font-size: 13px;
+    color: #acacac !important; // FORZAR texto gris claro
+    font-weight: 500;
+    margin: 0;
   }
 }
 
 .session-details {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
   
   .session-duration {
-    font-weight: 500;
-    color: var(--ion-color-primary);
+    font-weight: 700;
+    font-size: 16px;
+    color: #407dff !important; // FORZAR azul
+    background: rgba(64, 125, 255, 0.1) !important;
+    padding: 6px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(64, 125, 255, 0.2);
+  }
+  
+  ion-icon {
+    font-size: 24px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+    
+    &[color="success"] {
+      color: #4caf50 !important;
+      filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.4));
+    }
+    
+    &[color="danger"] {
+      color: #f44336 !important;
+      filter: drop-shadow(0 0 8px rgba(244, 67, 54, 0.4));
+    }
   }
 }
 
+// Action Buttons - FORZAR tema oscuro
 .action-buttons {
-  padding: 16px;
+  padding: 20px 16px 32px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #121212 !important; // FORZAR fondo oscuro
   
   ion-button {
-    margin-bottom: 12px;
+    height: 56px;
+    font-weight: 600;
+    font-size: 16px;
+    --border-radius: 16px;
+    transition: all 0.3s ease;
+    
+    &[fill="outline"] {
+      --background: #1e1e1e !important;
+      --color: #407dff !important;
+      --border-color: #407dff !important;
+      --border-width: 2px;
+      background: #1e1e1e !important; // Backup
+      color: #407dff !important; // Backup
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      
+      &:hover {
+        --background: rgba(64, 125, 255, 0.05) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+      }
+    }
+    
+    &[fill="clear"] {
+      --color: #acacac !important;
+      color: #acacac !important; // Backup
+      
+      &:hover {
+        --color: #ffffff !important;
+        --background: rgba(255, 255, 255, 0.05) !important;
+      }
+    }
+    
+    ion-icon {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+  }
+}
+
+// Progress Indicators - NUEVO
+.progress-indicator {
+  background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%) !important;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 16px;
+  border: 1px solid #333333 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    
+    h4 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #ffffff !important;
+      margin: 0;
+    }
+    
+    .progress-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #407dff !important;
+    }
+  }
+  
+  .progress-bar {
+    height: 8px;
+    background: #333333 !important;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(135deg, #407dff 0%, #0d73ff 100%) !important;
+      border-radius: 4px;
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, 
+          transparent 0%, 
+          rgba(255, 255, 255, 0.3) 50%, 
+          transparent 100%);
+        animation: shimmer 2s infinite;
+      }
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// Responsive Design - FORZAR colores en responsive también
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 16px 12px 0;
+    background: #121212 !important;
+  }
+  
+  .charts-section {
+    padding: 16px 12px;
+    background: #121212 !important;
+  }
+  
+  .sessions-card {
+    margin: 16px 12px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%) !important;
+    
+    ion-card-header {
+      padding: 16px 20px 12px;
+      background: #1e1e1e !important;
+      
+      ion-card-title {
+        font-size: 18px;
+        color: #ffffff !important;
+      }
+    }
+    
+    ion-card-content {
+      padding: 20px;
+      background: #1e1e1e !important;
+    }
+  }
+  
+  .session-item {
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    background: #121212 !important;
+    
+    .session-details {
+      gap: 12px;
+      
+      .session-duration {
+        font-size: 14px;
+        padding: 4px 10px;
+        color: #407dff !important;
+      }
+      
+      ion-icon {
+        font-size: 22px;
+      }
+    }
+  }
+  
+  .action-buttons {
+    padding: 16px 12px 24px;
+    gap: 12px;
+    background: #121212 !important;
+    
+    ion-button {
+      height: 52px;
+      font-size: 15px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    background: #121212 !important;
+  }
+  
+  .session-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    background: #121212 !important;
+    
+    .session-details {
+      align-self: stretch;
+      justify-content: space-between;
+    }
+  }
+  
+  .action-buttons {
+    background: #121212 !important;
+    
+    ion-button {
+      height: 48px;
+      font-size: 14px;
+    }
   }
 }

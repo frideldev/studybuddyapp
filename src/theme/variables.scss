@@ -1,37 +1,91 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
-/* Theme base */
+// StudyBuddy - Paleta de colores unificada
 :root {
-  --background-lightz: #ffffff;
-  --background-darkz: #121212;
-
-  --ion-background-color: var(--background-lightz);
-  --ion-toolbar-background: var(--ion-background-color);
-  --ion-item-background: var(--ion-background-color);
-
-  --ion-text-color: #000; /* opcional: color de texto por defecto */
+  // Colores base del tema
+  --sb-primary-bg: #121212;           // Fondo principal (negro profundo)
+  --sb-secondary-bg: #1e1e1e;        // Fondo secundario (gris muy oscuro)
+  --sb-tertiary-bg: #2a2a2a;         // Fondo terciario (gris oscuro)
+  --sb-card-bg: #1f1f1f;             // Fondo de tarjetas
+  
+  // Colores de acento
+  --sb-primary-blue: #407dff;         // Azul principal
+  --sb-secondary-blue: #4285f4;       // Azul secundario
+  --sb-accent-blue: #0d73ff;          // Azul de acento
+  
+  // Texto
+  --sb-text-primary: #ffffff;         // Texto principal (blanco)
+  --sb-text-secondary: #acacac;       // Texto secundario (gris claro)
+  --sb-text-tertiary: #888888;        // Texto terciario (gris)
+  --sb-text-muted: #666666;           // Texto desactivado
+  
+  // Bordes y divisores
+  --sb-border-light: #333333;         // Bordes claros
+  --sb-border-medium: #404040;        // Bordes medianos
+  --sb-border-dark: #2a2a2a;          // Bordes oscuros
+  
+  // Estados
+  --sb-success: #4caf50;              // Verde éxito
+  --sb-warning: #ff9800;              // Naranja advertencia
+  --sb-danger: #f44336;               // Rojo peligro
+  --sb-info: #2196f3;                 // Azul información
+  
+  // Gradientes
+  --sb-gradient-primary: linear-gradient(135deg, #407dff 0%, #0d73ff 100%);
+  --sb-gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  --sb-gradient-card: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+  --sb-gradient-secondary: linear-gradient(135deg, #2a2a2a 0%, #333333 100%);
+  
+  // Sombras
+  --sb-shadow-small: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --sb-shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --sb-shadow-large: 0 8px 24px rgba(0, 0, 0, 0.3);
+  --sb-shadow-blue: 0 4px 12px rgba(66, 133, 244, 0.3);
+  
+  // Variables Ionic personalizadas
+  --ion-background-color: var(--sb-primary-bg);
+  --ion-toolbar-background: var(--sb-secondary-bg);
+  --ion-item-background: var(--sb-card-bg);
+  --ion-text-color: var(--sb-text-primary);
+  --ion-color-primary: var(--sb-primary-blue);
+  --ion-color-secondary: var(--sb-secondary-blue);
+  --ion-color-success: var(--sb-success);
+  --ion-color-warning: var(--sb-warning);
+  --ion-color-danger: var(--sb-danger);
 }
 
-/* iOS específico */
+// iOS específico
 :root.ios {
-  --ion-background-color: var(--background-lightz);
-  --ion-toolbar-background: var(--ion-background-color);
-  --ion-item-background: var(--ion-background-color);
+  --ion-background-color: var(--sb-primary-bg);
+  --ion-toolbar-background: var(--sb-secondary-bg);
+  --ion-item-background: var(--sb-card-bg);
 }
 
-/* Material Design específico */
+// Material Design específico
 :root.md {
-  --ion-background-color: var(--background-lightz);
-  --ion-toolbar-background: var(--ion-background-color);
-  --ion-item-background: var(--ion-background-color);
+  --ion-background-color: var(--sb-primary-bg);
+  --ion-toolbar-background: var(--sb-secondary-bg);
+  --ion-item-background: var(--sb-card-bg);
 }
 
-/* Dark mode: aplica globalmente para cualquier plataforma con clase .ion-palette-dark */
+// Dark mode aplicado globalmente
 .ion-palette-dark,
 .ion-palette-dark.ios,
 .ion-palette-dark.md {
-  --ion-background-color: var(--background-darkz);
-  --ion-toolbar-background: var(--ion-background-color);
-  --ion-item-background: var(--background-darkz);
-  --ion-text-color: #fff; /* opcional */
+  --ion-background-color: var(--sb-primary-bg);
+  --ion-toolbar-background: var(--sb-secondary-bg);
+  --ion-item-background: var(--sb-card-bg);
+  --ion-text-color: var(--sb-text-primary);
 }
+
+// Clases utilitarias para la paleta StudyBuddy
+.sb-bg-primary { background: var(--sb-primary-bg) !important; }
+.sb-bg-secondary { background: var(--sb-secondary-bg) !important; }
+.sb-bg-tertiary { background: var(--sb-tertiary-bg) !important; }
+.sb-bg-card { background: var(--sb-card-bg) !important; }
+
+.sb-text-primary { color: var(--sb-text-primary) !important; }
+.sb-text-secondary { color: var(--sb-text-secondary) !important; }
+.sb-text-tertiary { color: var(--sb-text-tertiary) !important; }
+
+.sb-border { border-color: var(--sb-border-light) !important; }
+.sb-gradient-primary { background: var(--sb-gradient-primary) !important; }
+.sb-shadow-medium { box-shadow: var(--sb-shadow-medium) !important; }
