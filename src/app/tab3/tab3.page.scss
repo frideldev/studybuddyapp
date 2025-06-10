@@ -1,70 +1,388 @@
-:host {
-  ion-content {
-    --background: #121212;
-  }
+// Tab 3 - Groups Page con paleta StudyBuddy
+ion-content {
+  --background: var(--sb-gradient-dark);
+  --color: var(--sb-text-primary);
+}
 
-  ion-toolbar {
-    --background: #1f1f1f;
-  }
+ion-toolbar {
+  --background: var(--sb-gradient-secondary);
+  --color: var(--sb-text-primary);
+  border-bottom: 1px solid var(--sb-border-light);
+}
 
-  .title-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    h2 {
-      color: white;
-      font-size: 1.2rem;
-      font-weight: bold;
+ion-title {
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--sb-text-primary);
+}
+
+.ion-padding {
+  padding: 20px 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// Header with Create Group button
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 0 4px;
+  
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--sb-text-primary);
+    margin: 0;
+    background: var(--sb-gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  ion-button {
+    --background: var(--sb-gradient-primary);
+    --color: white;
+    --border-radius: 12px;
+    font-weight: 600;
+    height: 40px;
+    box-shadow: var(--sb-shadow-blue);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      --background: var(--sb-accent-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(66, 133, 244, 0.4);
+    }
+    
+    &:active {
+      transform: translateY(0);
     }
   }
+}
 
-  .group-card {
-    background-color: #1f1f1f;
-    border-radius: 14px;
-    overflow: hidden;
-    margin-bottom: 1.2rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+// Group Cards
+.group-card {
+  background: var(--sb-gradient-card);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid var(--sb-border-light);
+  box-shadow: var(--sb-shadow-medium);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sb-shadow-large);
+    border-color: var(--sb-primary-blue);
   }
-
-  .group-card img {
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--sb-gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+  
+  img {
     width: 100%;
-    height: 140px;
+    height: 180px;
     object-fit: cover;
+    transition: transform 0.4s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
   }
+}
 
-  .card-content {
-    padding: 0.9rem;
-    color: white;
-
-    h3 {
-      margin: 0;
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-
-    .subject {
-      font-size: 0.85rem;
-      color: #bbbbbb;
-    }
-
-    .icons {
-      display: flex;
-      gap: 1rem;
-      margin-top: 0.5rem;
-      align-items: center;
-      color: #aaaaaa;
-
-      ion-badge {
-        margin-left: auto;
-        font-size: 0.75rem;
+// Card Content
+.card-content {
+  padding: 20px;
+  position: relative;
+  
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--sb-text-primary);
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+  }
+  
+  .subject {
+    font-size: 14px;
+    color: var(--sb-primary-blue);
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(64, 125, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 12px;
+    display: inline-block;
+  }
+  
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 16px 0 12px 0;
+    
+    ion-icon {
+      font-size: 20px;
+      color: var(--sb-text-secondary);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      
+      &:hover {
+        color: var(--sb-primary-blue);
+        background: rgba(64, 125, 255, 0.1);
+        transform: translateY(-2px);
+      }
+      
+      &[name="chatbubble-outline"] {
+        &:hover {
+          color: var(--sb-success);
+          background: rgba(76, 175, 80, 0.1);
+        }
+      }
+      
+      &[name="lock-closed-outline"] {
+        &:hover {
+          color: var(--sb-warning);
+          background: rgba(255, 152, 0, 0.1);
+        }
+      }
+      
+      &[name="calendar-outline"] {
+        &:hover {
+          color: var(--sb-info);
+          background: rgba(33, 150, 243, 0.1);
+        }
       }
     }
+    
+    ion-badge {
+      --background: var(--sb-gradient-primary);
+      --color: white;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 12px;
+      margin-left: auto;
+      box-shadow: var(--sb-shadow-blue);
+      position: relative;
+      
+      &::before {
+        content: '👥';
+        margin-right: 6px;
+        font-size: 12px;
+      }
+    }
+  }
+  
+  .active {
+    font-size: 13px;
+    color: var(--sb-text-tertiary);
+    margin: 12px 0 0 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    
+    &::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sb-success);
+      box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+      animation: pulse 2s infinite;
+    }
+  }
+}
 
-    .active {
-      font-size: 0.75rem;
-      color: #888;
-      margin-top: 0.3rem;
+// Animation for active status
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(76, 175, 80, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+  }
+}
+
+// Group Card Variants (different colors for variety)
+.group-card:nth-child(odd) {
+  .subject {
+    color: var(--sb-success);
+    background: rgba(76, 175, 80, 0.1);
+  }
+  
+  .icons ion-badge {
+    --background: linear-gradient(135deg, var(--sb-success) 0%, #2e7d32 100%);
+  }
+}
+
+.group-card:nth-child(3n) {
+  .subject {
+    color: var(--sb-warning);
+    background: rgba(255, 152, 0, 0.1);
+  }
+  
+  .icons ion-badge {
+    --background: linear-gradient(135deg, var(--sb-warning) 0%, #f57c00 100%);
+  }
+}
+
+// Empty State (if no groups)
+.empty-groups-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--sb-text-secondary);
+  
+  ion-icon {
+    font-size: 80px;
+    color: var(--sb-border-medium);
+    margin-bottom: 20px;
+    opacity: 0.5;
+  }
+  
+  h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--sb-text-primary);
+    margin: 0 0 12px 0;
+  }
+  
+  p {
+    font-size: 16px;
+    color: var(--sb-text-secondary);
+    margin: 0 0 24px 0;
+    line-height: 1.5;
+  }
+  
+  ion-button {
+    --background: var(--sb-gradient-primary);
+    --color: white;
+    --border-radius: 12px;
+    font-weight: 600;
+    height: 48px;
+    padding: 0 24px;
+    box-shadow: var(--sb-shadow-blue);
+  }
+}
+
+// Loading State
+.groups-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  
+  ion-spinner {
+    --color: var(--sb-primary-blue);
+    width: 32px;
+    height: 32px;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .ion-padding {
+    padding: 16px 12px;
+  }
+  
+  .title-row h2 {
+    font-size: 24px;
+  }
+  
+  .group-card {
+    margin-bottom: 16px;
+    
+    img {
+      height: 160px;
+    }
+  }
+  
+  .card-content {
+    padding: 16px;
+    
+    h3 {
+      font-size: 18px;
+    }
+    
+    .icons {
+      gap: 12px;
+      
+      ion-icon {
+        font-size: 18px;
+        padding: 6px;
+      }
+      
+      ion-badge {
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .title-row {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+    
+    h2 {
+      text-align: center;
+      font-size: 22px;
+    }
+    
+    ion-button {
+      width: 100%;
+    }
+  }
+  
+  .group-card img {
+    height: 140px;
+  }
+  
+  .card-content {
+    h3 {
+      font-size: 16px;
+    }
+    
+    .subject {
+      font-size: 12px;
+    }
+    
+    .icons {
+      flex-wrap: wrap;
+      gap: 8px;
+      
+      ion-badge {
+        order: -1;
+        margin-left: 0;
+        margin-bottom: 8px;
+      }
     }
   }
 }

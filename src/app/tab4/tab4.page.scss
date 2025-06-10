@@ -1,3 +1,405 @@
-.content-container {
+// Tab 4 - Settings Page con paleta StudyBuddy
+ion-content {
+  --background: var(--sb-gradient-dark);
+  --color: var(--sb-text-primary);
+}
+
+ion-toolbar {
+  --background: var(--sb-gradient-secondary);
+  --color: var(--sb-text-primary);
+  border-bottom: 1px solid var(--sb-border-light);
+}
+
+ion-title {
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--sb-text-primary);
+}
+
+.settings-container {
+  padding: 20px 16px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+// Profile Section
+.profile-section {
+  margin-bottom: 32px;
+}
+
+.profile-card {
+  background: var(--sb-gradient-card);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid var(--sb-border-light);
+  box-shadow: var(--sb-shadow-medium);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--sb-gradient-primary);
+  }
+}
+
+.profile-avatar {
+  position: relative;
+  
+  img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 3px solid var(--sb-primary-blue);
+    object-fit: cover;
+  }
+  
+  .profile-status {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--sb-secondary-bg);
+    
+    &.online {
+      background: var(--sb-success);
+    }
+  }
+}
+
+.profile-info {
+  flex: 1;
+  
+  .profile-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--sb-text-primary);
+    margin: 0 0 4px 0;
+  }
+  
+  .profile-email {
+    font-size: 14px;
+    color: var(--sb-text-secondary);
+    margin: 0 0 8px 0;
+  }
+  
+  .profile-badge {
+    background: var(--sb-gradient-primary);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+.edit-profile-btn {
+  --background: rgba(64, 125, 255, 0.1);
+  --color: var(--sb-primary-blue);
+  --border-radius: 12px;
+  
+  ion-icon {
+    font-size: 20px;
+  }
+}
+
+// Settings Sections
+.settings-section {
+  margin-bottom: 28px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sb-text-primary);
+  margin: 0 0 16px 0;
+  padding: 0 4px;
+  
+  ion-icon {
+    font-size: 22px;
+    color: var(--sb-primary-blue);
+  }
+}
+
+// Theme Options
+.theme-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.theme-option {
+  background: var(--sb-card-bg);
+  border: 2px solid var(--sb-border-light);
+  border-radius: 16px;
+  padding: 16px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  
+  &:hover {
+    border-color: var(--sb-border-medium);
+    transform: translateY(-2px);
+  }
+  
+  &.active {
+    border-color: var(--sb-primary-blue);
+    background: rgba(64, 125, 255, 0.05);
+    box-shadow: var(--sb-shadow-blue);
+    
+    .theme-label {
+      color: var(--sb-primary-blue);
+      font-weight: 600;
+    }
+    
+    ion-icon {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      color: var(--sb-primary-blue);
+      font-size: 20px;
+    }
+  }
+}
+
+.theme-preview {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  margin: 0 auto 12px;
+  overflow: hidden;
+  border: 1px solid var(--sb-border-light);
+  position: relative;
+  
+  .theme-header {
+    height: 14px;
+    width: 100%;
+  }
+  
+  .theme-content {
+    height: 34px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 4px;
+    
+    &::before, &::after {
+      content: '';
+      height: 3px;
+      border-radius: 2px;
+    }
+    
+    &::before {
+      width: 80%;
+    }
+    
+    &::after {
+      width: 60%;
+    }
+  }
+  
+  &.light-theme {
+    .theme-header {
+      background: #f5f5f5;
+    }
+    
+    .theme-content {
+      background: #ffffff;
+      
+      &::before, &::after {
+        background: #e0e0e0;
+      }
+    }
+  }
+  
+  &.dark-theme {
+    .theme-header {
+      background: var(--sb-secondary-bg);
+    }
+    
+    .theme-content {
+      background: var(--sb-primary-bg);
+      
+      &::before, &::after {
+        background: var(--sb-border-light);
+      }
+    }
+  }
+  
+  &.system-theme {
+    .theme-header {
+      background: linear-gradient(90deg, #f5f5f5 50%, var(--sb-secondary-bg) 50%);
+    }
+    
+    .theme-content {
+      background: linear-gradient(90deg, #ffffff 50%, var(--sb-primary-bg) 50%);
+      
+      &::before, &::after {
+        background: linear-gradient(90deg, #e0e0e0 50%, var(--sb-border-light) 50%);
+      }
+    }
+  }
+}
+
+.theme-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sb-text-secondary);
+  transition: all 0.3s ease;
+}
+
+// Settings List
+.settings-list {
+  background: var(--sb-card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--sb-border-light);
+  overflow: hidden;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 20px;
+  border-bottom: 1px solid var(--sb-border-dark);
+  transition: all 0.3s ease;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &.clickable {
+    cursor: pointer;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    
+    &:active {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+  
+  &.danger {
+    .setting-content h5 {
+      color: var(--sb-danger);
+    }
+  }
+}
+
+.setting-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  
+  ion-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+}
+
+.setting-content {
+  flex: 1;
+  
+  h5 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--sb-text-primary);
+    margin: 0 0 4px 0;
+  }
+  
+  p {
+    font-size: 14px;
+    color: var(--sb-text-secondary);
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+// Toggle Switches
+ion-toggle {
+  --background: var(--sb-border-medium);
+  --background-checked: var(--sb-primary-blue);
+  --handle-background: var(--sb-text-primary);
+  --handle-background-checked: var(--sb-text-primary);
+  --handle-spacing: 2px;
+}
+
+// Footer
+.settings-footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  
+  p {
+    font-size: 13px;
+    color: var(--sb-text-tertiary);
+    margin: 4px 0;
+    
+    &:first-child {
+      font-weight: 600;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 480px) {
+  .settings-container {
+    padding: 16px 12px;
+  }
+  
+  .profile-card {
+    padding: 20px;
+    
+    .profile-avatar img {
+      width: 56px;
+      height: 56px;
+    }
+    
+    .profile-info .profile-name {
+      font-size: 18px;
+    }
+  }
+  
+  .theme-options {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 12px;
+  }
+  
+  .theme-preview {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .setting-item {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .settings-container {
+    padding: 32px 24px;
+  }
+  
+  .theme-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
