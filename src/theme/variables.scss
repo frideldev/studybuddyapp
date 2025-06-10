@@ -1,2 +1,37 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+/* Theme base */
+:root {
+  --background-lightz: #ffffff;
+  --background-darkz: #121212;
+
+  --ion-background-color: var(--background-lightz);
+  --ion-toolbar-background: var(--ion-background-color);
+  --ion-item-background: var(--ion-background-color);
+
+  --ion-text-color: #000; /* opcional: color de texto por defecto */
+}
+
+/* iOS específico */
+:root.ios {
+  --ion-background-color: var(--background-lightz);
+  --ion-toolbar-background: var(--ion-background-color);
+  --ion-item-background: var(--ion-background-color);
+}
+
+/* Material Design específico */
+:root.md {
+  --ion-background-color: var(--background-lightz);
+  --ion-toolbar-background: var(--ion-background-color);
+  --ion-item-background: var(--ion-background-color);
+}
+
+/* Dark mode: aplica globalmente para cualquier plataforma con clase .ion-palette-dark */
+.ion-palette-dark,
+.ion-palette-dark.ios,
+.ion-palette-dark.md {
+  --ion-background-color: var(--background-darkz);
+  --ion-toolbar-background: var(--ion-background-color);
+  --ion-item-background: var(--background-darkz);
+  --ion-text-color: #fff; /* opcional */
+}

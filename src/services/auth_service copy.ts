@@ -9,6 +9,7 @@ import { firebaseConfig } from '../app/firebase-config';
   providedIn: 'root'
 })
 export class AuthService {
+
   private app = initializeApp(firebaseConfig);
   private auth = getAuth(this.app);
   private firestore = getFirestore(this.app);

@@ -8,35 +8,62 @@
         <p class="p">Login on StudyBuddy to boost your academic success</p>
       </div>
       
-      <div class="group-2">
-        <div class="text-wrapper-3">Email</div>
-        <div class="overlap-group-wrapper">
-          <div class="div-wrapper">
-            <input class="text-wrapper-4" type="email" placeholder="Enter your email address">
+      <form (ngSubmit)="onLogin()">
+        <!-- Mostrar mensaje de error -->
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+        
+        <div class="group-2">
+          <div class="text-wrapper-3">Email</div>
+          <div class="overlap-group-wrapper">
+            <div class="div-wrapper">
+              <input 
+                class="text-wrapper-4" 
+                type="email" 
+                placeholder="Enter your email address"
+                [(ngModel)]="email"
+                name="email"
+                required
+              >
+            </div>
           </div>
         </div>
-      </div>
-      
-      <div class="group-3">
-        <div class="text-wrapper-3">Password</div>
-        <div class="overlap-group-wrapper">
-          <div class="div-wrapper">
-            <input class="text-wrapper-4" type="password" placeholder="Create a password">
+        
+        <div class="group-3">
+          <div class="text-wrapper-3">Password</div>
+          <div class="overlap-group-wrapper">
+            <div class="div-wrapper">
+              <input 
+                class="text-wrapper-4" 
+                type="password" 
+                placeholder="Create a password"
+                [(ngModel)]="password"
+                name="password"
+                required
+              >
+            </div>
           </div>
         </div>
-      </div>
-      
-      <button class="next-button">
-        <div class="overlap-group">
-          <div class="text-wrapper">Log In</div>
-        </div>
-      </button>
+        
+        <button 
+          class="next-button" 
+          type="submit"
+          [disabled]="isLoading"
+        >
+          <div class="overlap-group">
+            <div class="text-wrapper">
+              {{ isLoading ? 'Cargando...' : 'Log In' }}
+            </div>
+          </div>
+        </button>
+      </form>
       
       <div class="create-an-account-wrapper">
         <p class="create-an-account">
           <span class="span">Create an account?</span>
           <span class="text-wrapper-5">&nbsp;</span>
-          <span class="text-wrapper-6">Sign up</span>
+          <span class="text-wrapper-6" (click)="navigateToSignup()">Sign up</span>
         </p>
       </div>
     </div>

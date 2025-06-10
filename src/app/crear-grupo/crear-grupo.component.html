@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Nuevo Grupo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="CANCELAR()">Cancelar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" class="ion-padding">
+  <ion-item>
+    <ion-label position="stacked">Nombre del grupo</ion-label>
+    <ion-input [(ngModel)]="groupName" placeholder="Ej. Física 1"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Materia</ion-label>
+    <ion-input [(ngModel)]="subject" placeholder="Ej. PHYS 101"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Miembros</ion-label>
+    <ion-input type="number" [(ngModel)]="members"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Estado</ion-label>
+    <ion-input [(ngModel)]="status" placeholder="Ej. Active 1 hour ago"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Imagen (URL)</ion-label>
+    <ion-input [(ngModel)]="imageUrl" placeholder="URL de la imagen"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" color="primary" (click)="GUARDAR()" class="mt-4">
+    Guardar Grupo
+  </ion-button>
+</ion-content>
