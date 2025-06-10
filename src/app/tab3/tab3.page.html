@@ -10,7 +10,7 @@
     <ion-button size="small" color="primary" (click)="CREATEGROUP()">+ Create Group</ion-button>
   </div>
 
-  <div *ngFor="let group of studyGroups" class="group-card">
+  <div *ngFor="let group of studyGroups" class="group-card" (click)="viewGroupDetails(group)">
     <img [src]="group.image" alt="group" />
     <div class="card-content">
       <h3>{{ group.title }}</h3>
