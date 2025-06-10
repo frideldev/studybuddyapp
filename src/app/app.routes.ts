@@ -3,8 +3,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'tabs',
-    loadComponent: () => import('./tabs/tabs.page').then((m) => m.TabsPage),
-    children: [
+    loadComponent: () => import('./tabs/tabs.page').then((m) => m.TabsPage),    children: [
+      {
+        path: 'home',
+        loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+      },
       {
         path: 'tab1',
         loadComponent: () => import('./tab1/tab1.page').then((m) => m.Tab1Page),
@@ -26,29 +29,12 @@ export const routes: Routes = [
         loadComponent: () => import('./tab5/tab5.page').then((m) => m.Tab5Page),
       },
       {
-        path: 'tab6',
-        loadComponent: () => import('./tab6/tab6.page').then((m) => m.Tab6Page),
-      },
-      {
         path: '',
-        redirectTo: 'tab1',
+        redirectTo: 'home',
         pathMatch: 'full',
       },
     ],
   },
-  {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
-  },
-  {
-    path: 'register',
-    loadComponent: () =>
-      import('./auth/register/register.component').then((m) => m.RegisterComponent),
-  },
-  {path: 'login',
-    loadComponent: () =>
-      import('./login/login.page').then((m) => m.LoginPage),
-    },
   {
     path: '',
     redirectTo: 'tabs',
