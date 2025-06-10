@@ -1,0 +1,141 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Detalles del Grupo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" [fullscreen]="true">
+  <!-- Group Header -->
+  <div class="group-header">
+    <div class="group-banner">
+      <img [src]="group.image" [alt]="group.title" />
+      <div class="group-overlay">
+        <h1>{{group.title}}</h1>
+        <p class="subject">{{group.subject}}</p>
+        <div class="group-stats">
+          <div class="stat">
+            <ion-icon name="people"></ion-icon>
+            <span>{{group.members}} miembros</span>
+          </div>
+          <div class="stat">
+            <ion-icon name="radio-button-on" color="success"></ion-icon>
+            <span>Activo</span>
+          </div>
+          <div class="stat">
+            <ion-icon name="calendar"></ion-icon>
+            <span>3 sesiones/semana</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-container">
+    <!-- Members Section -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title">
+          <ion-icon name="people" color="primary"></ion-icon>
+          <h2>Miembros del Grupo</h2>
+        </div>
+      </div>
+      
+      <div class="members-list">
+        <div class="member-item" *ngFor="let member of members">
+          <div class="member-avatar">
+            <img [src]="member.avatar" [alt]="member.name" />
+            <div class="status-dot" [class]="'dot-' + member.color"></div>
+          </div>
+          <div class="member-info">
+            <h3>{{member.name}}</h3>
+            <p>{{member.role}} • {{member.time}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Study Schedule Section -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title">
+          <ion-icon name="calendar" color="secondary"></ion-icon>
+          <h2>Horarios de Estudio</h2>
+        </div>
+      </div>
+      
+      <div class="schedule-list">
+        <div class="schedule-item" *ngFor="let schedule of studySchedule">
+          <div class="schedule-day">{{schedule.day}}</div>
+          <div class="schedule-time">{{schedule.time}}</div>
+          <div class="schedule-status" [class]="'status-' + schedule.status">
+            <ion-badge [color]="schedule.status === 'available' ? 'success' : 'warning'">
+              {{schedule.status === 'available' ? 'Disponible' : 'Por Grupo'}}
+            </ion-badge>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group Information Section -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-title">
+          <ion-icon name="information-circle" color="tertiary"></ion-icon>
+          <h2>Información del Grupo</h2>
+        </div>
+      </div>
+      
+      <div class="info-content">
+        <div class="info-item">
+          <ion-icon name="videocam" color="primary"></ion-icon>
+          <p>{{groupInfo.sessions}}</p>
+        </div>
+        
+        <div class="info-item">
+          <ion-icon name="chatbubbles" color="success"></ion-icon>
+          <p>{{groupInfo.projectPermanent}}</p>
+        </div>
+        
+        <div class="info-item">
+          <ion-icon name="school" color="warning"></ion-icon>
+          <p>{{groupInfo.noRequires}}</p>
+        </div>
+
+        <div class="requirements-section">
+          <h3>Requisitos y materiales:</h3>
+          <ul>
+            <li *ngFor="let req of groupInfo.requirements">
+              <ion-icon name="checkmark-circle" color="success"></ion-icon>
+              {{req}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <ion-button expand="block" color="primary" (click)="joinGroup()">
+        <ion-icon name="person-add" slot="start"></ion-icon>
+        Unirse al Grupo
+      </ion-button>
+      
+      <div class="secondary-actions">
+        <ion-button fill="outline" color="secondary" (click)="chatGroup()">
+          <ion-icon name="chatbubbles" slot="start"></ion-icon>
+          Chat Grupal
+        </ion-button>
+        
+        <ion-button fill="outline" color="tertiary" (click)="viewResources()">
+          <ion-icon name="folder-open" slot="start"></ion-icon>
+          Ver Recursos
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
