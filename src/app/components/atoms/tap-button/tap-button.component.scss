@@ -1,0 +1,39 @@
+// src/app/components/atoms/tab-button/tab-button.component.scss
+.tab-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 1px solid var(--ion-color-medium);
+  border-radius: 24px;
+  background: transparent;
+  color: var(--ion-color-medium);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+
+  &:hover {
+    border-color: var(--ion-color-primary);
+    color: var(--ion-color-primary);
+  }
+
+  &.active {
+    background: var(--ion-color-primary);
+    border-color: var(--ion-color-primary);
+    color: white;
+    
+    .tab-icon {
+      color: white;
+    }
+  }
+}
+
+.tab-icon {
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.tab-label {
+  white-space: nowrap;
+}

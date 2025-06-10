@@ -1,6 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Analytics</ion-title>
+    <ion-title>Analytics</ion-title>
+    <ion-buttons slot="end">
+      <ion-button 
+        fill="clear" 
+        (click)="EXPORT_DATA()">
+        <ion-icon name="download-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -10,5 +18,120 @@
       [cardData]="studyStreakCard"
       *ngIf="studyStreakCard">
     </app-analytics-card>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Analytics</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Overview Stats -->
+  <div class="stats-grid">
+    <app-stat-card
+      icon="time-outline"
+      [value]="totalStudyHours.toFixed(1) + 'h'"
+      label="Total Hours"
+      color="primary"
+      size="medium">
+    </app-stat-card>
+    
+    <app-stat-card
+      icon="checkmark-circle-outline"
+      [value]="completedSessions"
+      label="Completed Sessions"
+      color="success"
+      size="medium">
+    </app-stat-card>
+    
+    <app-stat-card
+      icon="flame-outline"
+      [value]="currentStreak + ' days'"
+      label="Current Streak"
+      color="warning"
+      size="medium">
+    </app-stat-card>
+    
+    <app-stat-card
+      icon="target-outline"
+      [value]="GET_COMPLETION_PERCENTAGE() + '%'"
+      label="Weekly Goal"
+      color="danger"
+      size="medium">
+    </app-stat-card>
   </div>
+
+  <!-- Progress Card -->
+  <app-analytics-card
+    title="Weekly Progress"
+    [value]="totalStudyHours.toFixed(1)"
+    subtitle="hours out of 20 hour goal"
+    icon="trending-up-outline"
+    color="primary"
+    [progress]="GET_COMPLETION_PERCENTAGE()">
+  </app-analytics-card>
+
+  <!-- Charts Section -->
+  <div class="charts-section">
+    <app-chart
+      title="Weekly Study Hours"
+      type="bar"
+      [data]="weeklyChartData">
+    </app-chart>
+    
+    <app-chart
+      title="Subject Distribution"
+      type="pie"
+      [data]="subjectChartData">
+    </app-chart>
+  </div>
+
+  <!-- Recent Sessions -->
+  <ion-card class="sessions-card">
+    <ion-card-header>
+      <ion-card-title>Recent Sessions</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <div 
+        *ngFor="let session of recentSessions" 
+        class="session-item">
+        <div class="session-info">
+          <div class="session-subject">{{ session.subject }}</div>
+          <div class="session-date">{{ session.date }}</div>
+        </div>
+        <div class="session-details">
+          <span class="session-duration">
+            {{ FORMAT_DURATION(session.duration) }}
+          </span>
+          <ion-icon 
+            [name]="session.completed ? 
+              'checkmark-circle' : 'close-circle'"
+            [color]="session.completed ? 'success' : 'danger'">
+          </ion-icon>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Action Buttons -->
+  <div class="action-buttons">
+    <ion-button 
+      expand="block" 
+      fill="outline" 
+      color="primary"
+      (click)="EXPORT_DATA()">
+      <ion-icon name="download-outline" slot="start"></ion-icon>
+      Export Data
+    </ion-button>
+    
+    <ion-button 
+      expand="block" 
+      fill="clear" 
+      color="medium"
+      (click)="RESET_ANALYTICS()">
+      <ion-icon name="refresh-outline" slot="start"></ion-icon>
+      Reset Analytics
+    </ion-button>
+  </div>
+
 </ion-content>

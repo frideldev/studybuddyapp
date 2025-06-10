@@ -1,0 +1,172 @@
+// src/app/components/molecules/study-time-content/study-time-content.component.scss
+.study-time-container {
+  padding: 20px;
+}
+
+.goal-section {
+  text-align: center;
+  margin-bottom: 30px;
+  
+  h3 {
+    color: var(--ion-color-light);
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+}
+
+.progress-circle {
+  display: flex;
+  justify-content: center;
+  
+  .circle-progress {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(
+      var(--ion-color-primary) var(--progress, 0%),
+      var(--ion-color-dark-tint) var(--progress, 0%)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+    &::before {
+      content: '';
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--ion-color-dark);
+      position: absolute;
+    }
+  }
+  
+  .progress-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    
+    .progress-time {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--ion-color-light);
+    }
+    
+    .progress-target {
+      font-size: 12px;
+      color: var(--ion-color-medium);
+    }
+  }
+}
+
+.sessions-section {
+  margin-bottom: 30px;
+  
+  h3 {
+    color: var(--ion-color-light);
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+}
+
+.sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.session-item {
+  background: var(--ion-color-dark-tint);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.session-info {
+  display: flex;
+  flex-direction: column;
+  
+  .session-subject {
+    color: var(--ion-color-light);
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .session-time {
+    color: var(--ion-color-medium);
+    font-size: 12px;
+  }
+}
+
+.session-stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  .session-duration {
+    color: var(--ion-color-primary);
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+
+.efficiency-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  
+  &.high {
+    background: rgba(var(--ion-color-success-rgb), 0.2);
+    color: var(--ion-color-success);
+  }
+  
+  &.medium {
+    background: rgba(var(--ion-color-warning-rgb), 0.2);
+    color: var(--ion-color-warning);
+  }
+  
+  &.low {
+    background: rgba(var(--ion-color-danger-rgb), 0.2);
+    color: var(--ion-color-danger);
+  }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.stat-card {
+  background: var(--ion-color-dark-tint);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  ion-icon {
+    font-size: 24px;
+  }
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  
+  .stat-value {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--ion-color-light);
+  }
+  
+  .stat-label {
+    font-size: 11px;
+    color: var(--ion-color-medium);
+  }
+}
