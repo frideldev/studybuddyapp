@@ -1,12 +1,217 @@
+// Tabs Navigation Styles
 ion-tab-bar {
-  --background: var(--ion-color-primary);
-  --color: var(--ion-color-primary-contrast);
+  --background: var(--sb-background-card);
+  --border: 1px solid var(--sb-border-light);
+  --color: var(--sb-text-tertiary);
+  --color-selected: var(--sb-primary);
+  height: 60px;
+  padding: 0;
+  
+  // Add subtle shadow above tab bar
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 
 ion-tab-button {
-  --color-selected: var(--ion-color-secondary);
+  --background: transparent;
+  --background-focused: rgba(64, 125, 255, 0.1);
+  --color: var(--sb-text-tertiary);
+  --color-selected: var(--sb-primary);
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  
+  // Icon styling
+  ion-icon {
+    font-size: 24px;
+    margin-bottom: 2px;
+    transition: all 0.2s ease;
+  }
+  
+  // Label styling
+  ion-label {
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  // Selected state
+  &.tab-selected {
+    --color: var(--sb-primary);
+    
+    ion-icon {
+      transform: scale(1.1);
+      color: var(--sb-primary);
+    }
+    
+    ion-label {
+      color: var(--sb-primary);
+      font-weight: 700;
+    }
+    
+    // Add subtle glow effect for selected tab
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 32px;
+      height: 3px;
+      background: var(--sb-primary);
+      border-radius: 0 0 4px 4px;
+    }
+  }
+  
+  // Hover effect (for web/desktop)
+  &:hover:not(.tab-selected) {
+    --color: var(--sb-text-secondary);
+    
+    ion-icon {
+      transform: scale(1.05);
+      color: var(--sb-text-secondary);
+    }
+  }
+  
+  // Active/pressed state
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
-ion-tab-button.tab-selected {
-  --color: var(--ion-color-secondary);
+// Specific tab customizations
+ion-tab-button[tab="tab1"] {
+  ion-icon {
+    // Tasks icon - use a task/checklist icon
+    &::before {
+      content: 'checklist';
+    }
+  }
+}
+
+ion-tab-button[tab="tab2"] {
+  ion-icon {
+    // Resources icon - use a library/book icon
+    &::before {
+      content: 'library';
+    }
+  }
+}
+
+ion-tab-button[tab="tab3"] {
+  ion-icon {
+    // Groups icon - use a people icon
+    &::before {
+      content: 'people';
+    }
+  }
+}
+
+ion-tab-button[tab="tab4"] {
+  ion-icon {
+    // Analytics icon - use a bar chart icon
+    &::before {
+      content: 'bar-chart';
+    }
+  }
+}
+
+ion-tab-button[tab="tab5"] {
+  ion-icon {
+    // Profile icon - use a person icon
+    &::before {
+      content: 'person-circle';
+    }
+  }
+}
+
+ion-tab-button[tab="tab6"] {
+  ion-icon {
+    // Settings icon - use a settings icon
+    &::before {
+      content: 'settings';
+    }
+  }
+}
+
+// Badge notifications (for future use)
+.tab-badge {
+  position: absolute;
+  top: 6px;
+  right: 20px;
+  background: var(--sb-danger);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 8px;
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+// Responsive design for larger screens
+@media (min-width: 768px) {
+  ion-tab-bar {
+    height: 70px;
+    --border: 1px solid var(--sb-border-light);
+  }
+  
+  ion-tab-button {
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    
+    ion-icon {
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+    
+    ion-label {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+  }
+}
+
+// Dark theme support
+:host-context(.ion-palette-dark) {
+  ion-tab-bar {
+    --background: var(--sb-background-card);
+    --border: 1px solid var(--sb-border-light);
+  }
+  
+  ion-tab-button {
+    --color: var(--sb-text-tertiary);
+    --color-selected: var(--sb-primary);
+    --background-focused: rgba(64, 125, 255, 0.1);
+  }
+}
+
+// Animation for tab switching
+ion-tabs {
+  .tab-content {
+    transition: opacity 0.2s ease-in-out;
+  }
+}
+
+// Custom tab bar for better visual hierarchy
+.tabs-container {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--sb-border-light);
+    z-index: 1;
+  }
 }

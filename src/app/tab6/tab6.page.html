@@ -1,28 +1,221 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Tab 6</ion-title>
+    <ion-title>Settings</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 6</ion-title>
+      <ion-title size="large">Settings</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <!-- Empty content area to fill -->
   <div class="content-container">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Tab 6 - Ready to Fill</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>This is Tab 6 content area. Add your content here.</p>
-        <ion-button fill="outline" color="danger">Sample Button</ion-button>
-        <ion-button fill="outline" color="danger">Ligth Mode</ion-button>
-        <ion-button fill="outline" color="danger">Dark Mode</ion-button>
-      </ion-card-content>
-    </ion-card>
+    <!-- Theme Selector -->
+    <div class="theme-selector">
+      <div class="theme-header">
+        <h2>Choose Your Theme</h2>
+        <p>Select your preferred app appearance</p>
+      </div>
+      <div class="theme-options">
+        <div class="theme-option active">
+          <div class="theme-preview dark"></div>
+          <div class="theme-title">Dark Mode</div>
+          <div class="theme-subtitle">Easy on the eyes</div>
+        </div>
+        <div class="theme-option">
+          <div class="theme-preview light"></div>
+          <div class="theme-title">Light Mode</div>
+          <div class="theme-subtitle">Classic appearance</div>
+        </div>
+        <div class="theme-option">
+          <div class="theme-preview auto"></div>
+          <div class="theme-title">Auto</div>
+          <div class="theme-subtitle">Follow system</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <div class="action-card">
+        <div class="action-icon backup">
+          <ion-icon name="cloud-upload"></ion-icon>
+        </div>
+        <div class="action-title">Backup</div>
+        <div class="action-subtitle">Save your data</div>
+      </div>
+      <div class="action-card">
+        <div class="action-icon export">
+          <ion-icon name="download"></ion-icon>
+        </div>
+        <div class="action-title">Export</div>
+        <div class="action-subtitle">Download data</div>
+      </div>
+      <div class="action-card">
+        <div class="action-icon reset">
+          <ion-icon name="refresh"></ion-icon>
+        </div>
+        <div class="action-title">Reset</div>
+        <div class="action-subtitle">Restore defaults</div>
+      </div>
+      <div class="action-card">
+        <div class="action-icon help">
+          <ion-icon name="help-circle"></ion-icon>
+        </div>
+        <div class="action-title">Help</div>
+        <div class="action-subtitle">Get support</div>
+      </div>
+    </div>
+
+    <!-- Notifications Settings -->
+    <div class="settings-card">
+      <div class="card-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <ion-icon name="notifications"></ion-icon>
+          </div>
+          <div class="header-text">
+            <h3>Notifications</h3>
+            <p>Manage your notification preferences</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="notification-settings">
+          <div class="notification-item">
+            <div class="notification-info">
+              <div class="notification-title">Study Reminders</div>
+              <div class="notification-description">Get reminded about your scheduled study sessions</div>
+            </div>
+            <ion-toggle class="notification-toggle" checked></ion-toggle>
+          </div>
+          <div class="notification-item">
+            <div class="notification-info">
+              <div class="notification-title">Task Deadlines</div>
+              <div class="notification-description">Alerts for upcoming task deadlines</div>
+            </div>
+            <ion-toggle class="notification-toggle" checked></ion-toggle>
+          </div>
+          <div class="notification-item">
+            <div class="notification-info">
+              <div class="notification-title">Group Activities</div>
+              <div class="notification-description">Updates from your study groups</div>
+            </div>
+            <ion-toggle class="notification-toggle"></ion-toggle>
+          </div>
+          <div class="notification-item">
+            <div class="notification-info">
+              <div class="notification-title">Weekly Reports</div>
+              <div class="notification-description">Summary of your weekly progress</div>
+            </div>
+            <ion-toggle class="notification-toggle" checked></ion-toggle>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Study Timer Settings -->
+    <div class="settings-card">
+      <div class="card-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <ion-icon name="timer"></ion-icon>
+          </div>
+          <div class="header-text">
+            <h3>Study Timer</h3>
+            <p>Customize your study session timers</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="timer-settings">
+          <div class="timer-input-group">
+            <div class="timer-label">Focus Session</div>
+            <ion-input class="timer-input" type="number" value="25"></ion-input>
+            <div class="timer-unit">minutes</div>
+          </div>
+          <div class="timer-input-group">
+            <div class="timer-label">Short Break</div>
+            <ion-input class="timer-input" type="number" value="5"></ion-input>
+            <div class="timer-unit">minutes</div>
+          </div>
+          <div class="timer-input-group">
+            <div class="timer-label">Long Break</div>
+            <ion-input class="timer-input" type="number" value="15"></ion-input>
+            <div class="timer-unit">minutes</div>
+          </div>
+          
+          <div class="timer-presets">
+            <div class="presets-title">Quick Presets</div>
+            <div class="preset-buttons">
+              <ion-button class="preset-btn active">Pomodoro</ion-button>
+              <ion-button class="preset-btn">52-17</ion-button>
+              <ion-button class="preset-btn">90-20</ion-button>
+              <ion-button class="preset-btn">Custom</ion-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data & Storage -->
+    <div class="settings-card">
+      <div class="card-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <ion-icon name="server"></ion-icon>
+          </div>
+          <div class="header-text">
+            <h3>Data & Storage</h3>
+            <p>Manage your app data and storage</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="storage-info">
+          <div class="storage-item">
+            <div class="storage-label">App Data Size</div>
+            <div class="storage-value">24.5 MB</div>
+          </div>
+          <div class="storage-item">
+            <div class="storage-label">Study Sessions</div>
+            <div class="storage-value">156 sessions</div>
+          </div>
+          <div class="storage-item">
+            <div class="storage-label">Tasks Created</div>
+            <div class="storage-value">89 tasks</div>
+          </div>
+          <div class="storage-item">
+            <div class="storage-label">Last Backup</div>
+            <div class="storage-value">2 days ago</div>
+          </div>
+          
+          <div class="storage-actions">
+            <ion-button class="storage-btn primary">
+              <ion-icon name="cloud-upload" slot="start"></ion-icon>
+              Backup Now
+            </ion-button>
+            <ion-button class="storage-btn danger" fill="outline">
+              <ion-icon name="trash" slot="start"></ion-icon>
+              Clear Data
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- App Information -->
+    <div class="app-info">
+      <div class="app-logo">
+        <ion-icon name="school"></ion-icon>
+      </div>
+      <div class="app-title">StudyBuddy</div>
+      <div class="app-version">Version 1.0.0 (Build 1)</div>
+      <div class="app-description">
+        Your personal study companion designed to help you achieve academic success through effective time management and organized learning.
+      </div>
+    </div>
   </div>
 </ion-content>

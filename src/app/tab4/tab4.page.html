@@ -1,26 +1,181 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Tab 4</ion-title>
+    <ion-title>Analytics</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 4</ion-title>
+      <ion-title size="large">Analytics</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <!-- Empty content area to fill -->
   <div class="content-container">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Tab 4 - Ready to Fill</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>This is Tab 4 content area. Add your content here.</p>
-        <ion-button fill="outline" color="success">Sample Button</ion-button>
-      </ion-card-content>
-    </ion-card>
+    <!-- Progress Overview -->
+    <div class="progress-overview">
+      <div class="progress-item">
+        <div class="progress-icon study-time">
+          <ion-icon name="time"></ion-icon>
+        </div>
+        <div class="progress-value">24h</div>
+        <div class="progress-label">Study Time</div>
+        <div class="progress-change positive">+12% this week</div>
+      </div>
+      
+      <div class="progress-item">
+        <div class="progress-icon tasks-completed">
+          <ion-icon name="checkmark-circle"></ion-icon>
+        </div>
+        <div class="progress-value">15</div>
+        <div class="progress-label">Tasks Done</div>
+        <div class="progress-change positive">+3 from last week</div>
+      </div>
+      
+      <div class="progress-item">
+        <div class="progress-icon streak">
+          <ion-icon name="flame"></ion-icon>
+        </div>
+        <div class="progress-value">7</div>
+        <div class="progress-label">Day Streak</div>
+        <div class="progress-change positive">Personal best!</div>
+      </div>
+      
+      <div class="progress-item">
+        <div class="progress-icon efficiency">
+          <ion-icon name="trending-up"></ion-icon>
+        </div>
+        <div class="progress-value">92%</div>
+        <div class="progress-label">Efficiency</div>
+        <div class="progress-change positive">+5% improvement</div>
+      </div>
+    </div>
+
+    <!-- Study Time Chart -->
+    <div class="chart-container">
+      <div class="chart-header">
+        <h3>Study Time Trend</h3>
+        <div class="chart-controls">
+          <ion-button class="control-btn active" size="small">Week</ion-button>
+          <ion-button class="control-btn" size="small">Month</ion-button>
+          <ion-button class="control-btn" size="small">Year</ion-button>
+        </div>
+      </div>
+      <div class="chart-placeholder">
+        <div class="placeholder-content">
+          <ion-icon name="bar-chart-outline"></ion-icon>
+          <p>Study time chart will appear here</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Goals Section -->
+    <div class="goals-section">
+      <div class="goals-header">
+        <h3>Study Goals</h3>
+        <ion-button class="add-goal-btn" size="small">
+          <ion-icon name="add" slot="start"></ion-icon>
+          Add Goal
+        </ion-button>
+      </div>
+      
+      <div class="goal-item">
+        <div class="goal-header">
+          <div class="goal-title">Study 25 hours this week</div>
+          <div class="goal-progress-text">24h / 25h</div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill high-progress" style="width: 96%"></div>
+        </div>
+      </div>
+      
+      <div class="goal-item">
+        <div class="goal-header">
+          <div class="goal-title">Complete 20 tasks</div>
+          <div class="goal-progress-text">15 / 20</div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill medium-progress" style="width: 75%"></div>
+        </div>
+      </div>
+      
+      <div class="goal-item">
+        <div class="goal-header">
+          <div class="goal-title">Maintain 10-day streak</div>
+          <div class="goal-progress-text">7 / 10 days</div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill medium-progress" style="width: 70%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Study Sessions -->
+    <div class="study-sessions">
+      <div class="sessions-header">
+        <h3>Recent Sessions</h3>
+        <ion-button class="view-all-btn" fill="clear">View All</ion-button>
+      </div>
+      
+      <div class="session-item">
+        <div class="session-icon">
+          <ion-icon name="calculator"></ion-icon>
+        </div>
+        <div class="session-content">
+          <div class="session-subject">Calculus II - Derivatives</div>
+          <div class="session-details">Today • <span class="duration">2h 30m</span> • 8 tasks completed</div>
+        </div>
+        <div class="session-score">
+          <div class="score-value">95%</div>
+          <div class="score-label">Focus</div>
+        </div>
+      </div>
+      
+      <div class="session-item">
+        <div class="session-icon">
+          <ion-icon name="flask"></ion-icon>
+        </div>
+        <div class="session-content">
+          <div class="session-subject">Chemistry Lab Report</div>
+          <div class="session-details">Yesterday • <span class="duration">1h 45m</span> • 3 tasks completed</div>
+        </div>
+        <div class="session-score">
+          <div class="score-value">88%</div>
+          <div class="score-label">Focus</div>
+        </div>
+      </div>
+      
+      <div class="session-item">
+        <div class="session-icon">
+          <ion-icon name="book"></ion-icon>
+        </div>
+        <div class="session-content">
+          <div class="session-subject">Literature Essay</div>
+          <div class="session-details">2 days ago • <span class="duration">3h 15m</span> • 5 tasks completed</div>
+        </div>
+        <div class="session-score">
+          <div class="score-value">91%</div>
+          <div class="score-label">Focus</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance Analytics -->
+    <div class="analytics-card">
+      <div class="card-header">
+        <h3>Performance Analytics</h3>
+        <ion-select class="period-selector" value="week" placeholder="Period">
+          <ion-select-option value="week">This Week</ion-select-option>
+          <ion-select-option value="month">This Month</ion-select-option>
+          <ion-select-option value="semester">This Semester</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="chart-placeholder">
+        <div class="placeholder-content">
+          <ion-icon name="analytics-outline"></ion-icon>
+          <p>Performance metrics will appear here</p>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>

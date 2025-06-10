@@ -1,3 +1,475 @@
+// Tab 6 Styles - Settings & Preferences
 .content-container {
+  padding: 16px;
+  background: var(--sb-background-primary);
+  min-height: 100vh;
+}
+
+// Header Toolbar
+ion-toolbar {
+  --background: var(--sb-background-card);
+  --color: var(--sb-text-primary);
+  --border-color: var(--sb-border-light);
+}
+
+ion-title {
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--sb-text-primary);
+}
+
+// Content Area
+ion-content {
+  --background: var(--sb-background-primary);
+  --color: var(--sb-text-primary);
+}
+
+// Theme Selector
+.theme-selector {
+  background: var(--sb-background-card);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid var(--sb-border-light);
+  
+  .theme-header {
+    text-align: center;
+    margin-bottom: 24px;
+    
+    h2 {
+      color: var(--sb-text-primary);
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+    }
+    
+    p {
+      color: var(--sb-text-secondary);
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+  
+  .theme-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
+    
+    .theme-option {
+      background: var(--sb-background-input);
+      border-radius: 12px;
+      padding: 16px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      }
+      
+      &.active {
+        border-color: var(--sb-primary);
+        background: rgba(64, 125, 255, 0.1);
+      }
+      
+      .theme-preview {
+        width: 60px;
+        height: 40px;
+        border-radius: 8px;
+        margin: 0 auto 12px auto;
+        position: relative;
+        overflow: hidden;
+        
+        &.dark {
+          background: linear-gradient(135deg, #121212, #1f1f1f);
+        }
+        
+        &.light {
+          background: linear-gradient(135deg, #ffffff, #f5f5f5);
+        }
+        
+        &.auto {
+          background: linear-gradient(135deg, #121212 50%, #ffffff 50%);
+        }
+        
+        &::after {
+          content: '';
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          width: 12px;
+          height: 8px;
+          border-radius: 2px;
+          
+          .theme-option.dark &::after {
+            background: var(--sb-primary);
+          }
+          
+          .theme-option.light &::after {
+            background: var(--sb-primary);
+          }
+          
+          .theme-option.auto &::after {
+            background: var(--sb-primary);
+          }
+        }
+      }
+      
+      .theme-title {
+        color: var(--sb-text-primary);
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0 0 4px 0;
+      }
+      
+      .theme-subtitle {
+        color: var(--sb-text-secondary);
+        font-size: 12px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Settings Card
+.settings-card {
+  background: var(--sb-background-card);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--sb-border-light);
+  overflow: hidden;
+  
+  .card-header {
+    padding: 20px 20px 16px 20px;
+    border-bottom: 1px solid var(--sb-border-light);
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      
+      .header-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--sb-primary), #5389ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 16px;
+        
+        ion-icon {
+          font-size: 24px;
+          color: white;
+        }
+      }
+      
+      .header-text {
+        flex: 1;
+        
+        h3 {
+          color: var(--sb-text-primary);
+          font-size: 18px;
+          font-weight: 700;
+          margin: 0 0 4px 0;
+        }
+        
+        p {
+          color: var(--sb-text-secondary);
+          font-size: 14px;
+          margin: 0;
+        }
+      }
+    }
+  }
+  
+  .card-content {
+    padding: 20px;
+  }
+}
+
+// Notification Settings
+.notification-settings {
+  .notification-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--sb-border-light);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .notification-info {
+      flex: 1;
+      
+      .notification-title {
+        color: var(--sb-text-primary);
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 4px 0;
+      }
+      
+      .notification-description {
+        color: var(--sb-text-secondary);
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+    
+    .notification-toggle {
+      --handle-width: 20px;
+      --handle-height: 20px;
+      --track-width: 44px;
+      --track-height: 24px;
+    }
+  }
+}
+
+// Study Timer Settings
+.timer-settings {
+  .timer-input-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    
+    .timer-label {
+      color: var(--sb-text-primary);
+      font-size: 16px;
+      font-weight: 600;
+      min-width: 120px;
+    }
+    
+    .timer-input {
+      --background: var(--sb-background-input);
+      --color: var(--sb-text-primary);
+      --border-color: var(--sb-border-light);
+      --border-radius: 8px;
+      flex: 1;
+      max-width: 100px;
+    }
+    
+    .timer-unit {
+      color: var(--sb-text-secondary);
+      font-size: 14px;
+      min-width: 60px;
+    }
+  }
+  
+  .timer-presets {
+    margin-top: 20px;
+    
+    .presets-title {
+      color: var(--sb-text-primary);
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+    }
+    
+    .preset-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      
+      .preset-btn {
+        --background: var(--sb-background-input);
+        --color: var(--sb-text-primary);
+        --border-color: var(--sb-border-light);
+        --border-width: 1px;
+        --border-radius: 8px;
+        height: 36px;
+        font-size: 14px;
+        --padding-start: 12px;
+        --padding-end: 12px;
+        
+        &.active {
+          --background: var(--sb-primary);
+          --color: white;
+          --border-color: var(--sb-primary);
+        }
+      }
+    }
+  }
+}
+
+// Data & Storage
+.storage-info {
+  .storage-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--sb-border-light);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .storage-label {
+      color: var(--sb-text-primary);
+      font-size: 16px;
+      font-weight: 500;
+    }
+    
+    .storage-value {
+      color: var(--sb-text-secondary);
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  
+  .storage-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    
+    .storage-btn {
+      flex: 1;
+      --border-radius: 8px;
+      height: 44px;
+      font-weight: 600;
+      
+      &.primary {
+        --background: var(--sb-primary);
+        --color: white;
+      }
+      
+      &.danger {
+        --background: transparent;
+        --color: var(--sb-danger);
+        --border-color: var(--sb-danger);
+        --border-width: 1px;
+      }
+    }
+  }
+}
+
+// Quick Actions
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+  
+  .action-card {
+    background: var(--sb-background-card);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--sb-border-light);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+    
+    .action-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      margin: 0 auto 12px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &.backup {
+        background: linear-gradient(135deg, var(--sb-success), #4CD964);
+      }
+      
+      &.export {
+        background: linear-gradient(135deg, var(--sb-info), #70D7FF);
+      }
+      
+      &.reset {
+        background: linear-gradient(135deg, var(--sb-warning), #FFD60A);
+      }
+      
+      &.help {
+        background: linear-gradient(135deg, var(--sb-primary), #5389ff);
+      }
+      
+      ion-icon {
+        font-size: 24px;
+        color: white;
+      }
+    }
+    
+    .action-title {
+      color: var(--sb-text-primary);
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+    }
+    
+    .action-subtitle {
+      color: var(--sb-text-secondary);
+      font-size: 12px;
+      margin: 0;
+    }
+  }
+}
+
+// App Info
+.app-info {
+  background: var(--sb-background-card);
+  border-radius: 12px;
   padding: 20px;
+  border: 1px solid var(--sb-border-light);
+  text-align: center;
+  
+  .app-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--sb-primary), #5389ff);
+    margin: 0 auto 16px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    ion-icon {
+      font-size: 32px;
+      color: white;
+    }
+  }
+  
+  .app-title {
+    color: var(--sb-text-primary);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+  }
+  
+  .app-version {
+    color: var(--sb-text-secondary);
+    font-size: 14px;
+    margin: 0 0 16px 0;
+  }
+  
+  .app-description {
+    color: var(--sb-text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+// Dark theme support
+:host-context(.ion-palette-dark) {
+  .content-container {
+    background: var(--sb-background-primary);
+  }
+  
+  .theme-selector,
+  .settings-card,
+  .action-card,
+  .app-info {
+    background: var(--sb-background-card);
+    border-color: var(--sb-border-light);
+  }
 }

@@ -1,26 +1,202 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Tab 2</ion-title>
+    <ion-title>Study Resources</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Study Resources</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <!-- Empty content area to fill -->
   <div class="content-container">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Tab 2 - Ready to Fill</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>This is Tab 2 content area. Add your content here.</p>
-        <ion-button fill="outline" color="secondary">Sample Button</ion-button>
-      </ion-card-content>
-    </ion-card>
+    <!-- Quick Access Section -->
+    <div class="quick-access">
+      <h2 class="section-title">Quick Access</h2>
+      <div class="quick-buttons">
+        <ion-button class="quick-btn" fill="outline">
+          <ion-icon name="library-outline"></ion-icon>
+          Library
+        </ion-button>
+        <ion-button class="quick-btn" fill="outline">
+          <ion-icon name="document-text-outline"></ion-icon>
+          Notes
+        </ion-button>
+        <ion-button class="quick-btn" fill="outline">
+          <ion-icon name="videocam-outline"></ion-icon>
+          Videos
+        </ion-button>
+        <ion-button class="quick-btn" fill="outline">
+          <ion-icon name="download-outline"></ion-icon>
+          Downloads
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Study Stats -->
+    <div class="study-stats">
+      <h3 class="stats-title">This Week's Progress</h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Hours Studied</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">8</div>
+          <div class="stat-label">Tasks Done</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Resources Used</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">85%</div>
+          <div class="stat-label">Goal Progress</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources Grid -->
+    <div class="resources-grid">
+      <!-- Video Lectures -->
+      <div class="resource-card">
+        <div class="card-header">
+          <div class="resource-icon">
+            <ion-icon name="play"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Video Lectures</h3>
+            <p>Online course materials</p>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>Access recorded lectures, tutorials, and educational videos from your courses.</p>
+        </div>
+        <div class="card-actions">
+          <ion-button class="action-btn" size="small">
+            <ion-icon name="play"></ion-icon>
+            Watch Now
+          </ion-button>
+          <ion-button class="action-btn outline" size="small">
+            <ion-icon name="bookmark-outline"></ion-icon>
+            Save
+          </ion-button>
+        </div>
+      </div>
+
+      <!-- Study Guides -->
+      <div class="resource-card">
+        <div class="card-header">
+          <div class="resource-icon">
+            <ion-icon name="document-text"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Study Guides</h3>
+            <p>Curated study materials</p>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>Download comprehensive study guides, summaries, and reference materials.</p>
+        </div>
+        <div class="card-actions">
+          <ion-button class="action-btn" size="small">
+            <ion-icon name="download"></ion-icon>
+            Download
+          </ion-button>
+          <ion-button class="action-btn outline" size="small">
+            <ion-icon name="share-outline"></ion-icon>
+            Share
+          </ion-button>
+        </div>
+      </div>
+
+      <!-- Practice Tests -->
+      <div class="resource-card">
+        <div class="card-header">
+          <div class="resource-icon">
+            <ion-icon name="clipboard"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Practice Tests</h3>
+            <p>Quiz yourself</p>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>Take practice exams and quizzes to test your knowledge and track progress.</p>
+        </div>
+        <div class="card-actions">
+          <ion-button class="action-btn" size="small">
+            <ion-icon name="school"></ion-icon>
+            Start Quiz
+          </ion-button>
+          <ion-button class="action-btn outline" size="small">
+            <ion-icon name="analytics-outline"></ion-icon>
+            Results
+          </ion-button>
+        </div>
+      </div>
+
+      <!-- Digital Library -->
+      <div class="resource-card">
+        <div class="card-header">
+          <div class="resource-icon">
+            <ion-icon name="library"></ion-icon>
+          </div>
+          <div class="card-title">
+            <h3>Digital Library</h3>
+            <p>Books and articles</p>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>Access textbooks, research papers, and academic articles from various sources.</p>
+        </div>
+        <div class="card-actions">
+          <ion-button class="action-btn" size="small">
+            <ion-icon name="book"></ion-icon>
+            Browse
+          </ion-button>
+          <ion-button class="action-btn outline" size="small">
+            <ion-icon name="search-outline"></ion-icon>
+            Search
+          </ion-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="recent-activity">
+      <h3 class="activity-title">Recent Activity</h3>
+      <div class="activity-list">
+        <div class="activity-item">
+          <div class="activity-icon">
+            <ion-icon name="play"></ion-icon>
+          </div>
+          <div class="activity-content">
+            <div class="activity-text">Watched "Calculus Fundamentals" video</div>
+            <div class="activity-time">2 hours ago</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">
+            <ion-icon name="download"></ion-icon>
+          </div>
+          <div class="activity-content">
+            <div class="activity-text">Downloaded Physics study guide</div>
+            <div class="activity-time">1 day ago</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">
+            <ion-icon name="school"></ion-icon>
+          </div>
+          <div class="activity-content">
+            <div class="activity-text">Completed Chemistry practice test (92%)</div>
+            <div class="activity-time">2 days ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>

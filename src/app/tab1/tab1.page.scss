@@ -1,54 +1,58 @@
-// Tasks Container
+// Tab 1 Styles - Tasks Management
 .tasks-container {
   padding: 16px;
-  background-color: var(--ion-color-dark);
+  background: var(--sb-background-primary);
   min-height: 100vh;
 }
 
 // Header Toolbar Styles
 ion-toolbar {
-  --background: var(--ion-color-dark);
-  --color: var(--ion-color-light);
+  --background: var(--sb-background-card);
+  --color: var(--sb-text-primary);
+  --border-color: var(--sb-border-light);
 }
 
 ion-title {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 24px;
-  color: var(--ion-color-light);
+  color: var(--sb-text-primary);
 }
 
 // Add Task Button
 .add-task-btn {
-  --background: #007AFF;
-  --color: white;
+  --background: var(--sb-primary);
+  --color: var(--sb-text-primary);
   --border-radius: 8px;
   margin-right: 8px;
   height: 36px;
-  font-weight: 500;
+  font-weight: 600;
+  --padding-start: 12px;
+  --padding-end: 12px;
   
   ion-icon {
     font-size: 18px;
+    margin-right: 4px;
   }
 }
 
 // Search Bar
 .tasks-searchbar {
-  --background: #2a2a2a;
-  --color: var(--ion-color-light);
-  --placeholder-color: #8c8c8c;
-  --icon-color: #8c8c8c;
+  --background: var(--sb-background-input);
+  --color: var(--sb-text-primary);
+  --placeholder-color: var(--sb-text-tertiary);
+  --icon-color: var(--sb-text-tertiary);
   --border-radius: 12px;
   margin-bottom: 16px;
   
   .searchbar-input {
-    --background: #2a2a2a !important;
-    --color: var(--ion-color-light) !important;
-    border: 1px solid #3a3a3a;
+    --background: var(--sb-background-input) !important;
+    --color: var(--sb-text-primary) !important;
+    border: 1px solid var(--sb-border-light);
     border-radius: 12px;
   }
   
   .searchbar-search-icon {
-    color: #8c8c8c !important;
+    color: var(--sb-text-tertiary) !important;
   }
 }
 
@@ -58,6 +62,7 @@ ion-title {
   gap: 8px;
   margin-bottom: 20px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .filter-btn {
@@ -66,6 +71,20 @@ ion-title {
   font-size: 14px;
   font-weight: 500;
   text-transform: none;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  
+  &[fill="solid"] {
+    --background: var(--sb-primary);
+    --color: var(--sb-text-primary);
+  }
+  
+  &[fill="outline"] {
+    --background: transparent;
+    --color: var(--sb-text-secondary);
+    --border-color: var(--sb-border-light);
+    --border-width: 1px;
+  }
   
   ion-icon {
     font-size: 16px;
@@ -87,10 +106,16 @@ ion-title {
 
 .task-card {
   position: relative;
-  background-color: #2a2a2a;
+  background: var(--sb-background-card);
   border-radius: 12px;
   padding: 16px;
-  border: 1px solid #3a3a3a;
+  border: 1px solid var(--sb-border-light);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
   
   .delete-btn {
     position: absolute;
@@ -100,6 +125,13 @@ ion-title {
     --padding-end: 4px;
     width: 28px;
     height: 28px;
+    --background: transparent;
+    --color: var(--sb-text-tertiary);
+    
+    &:hover {
+      --background: rgba(255, 59, 48, 0.1);
+      --color: var(--sb-danger);
+    }
     
     ion-icon {
       font-size: 18px;
@@ -118,7 +150,7 @@ ion-title {
       .task-title {
         font-size: 16px;
         font-weight: 600;
-        color: var(--ion-color-light);
+        color: var(--sb-text-primary);
         margin: 0;
         line-height: 1.3;
       }
@@ -127,15 +159,15 @@ ion-title {
         margin-left: 8px;
         
         &.priority-high ion-icon {
-          color: #FF3B30;
+          color: var(--sb-danger);
         }
         
         &.priority-medium ion-icon {
-          color: #FFCC00;
+          color: var(--sb-warning);
         }
         
         &.priority-low ion-icon {
-          color: #34C759;
+          color: var(--sb-success);
         }
         
         ion-icon {
@@ -145,7 +177,7 @@ ion-title {
     }
     
     .task-subject {
-      color: #8c8c8c;
+      color: var(--sb-text-secondary);
       font-size: 14px;
       margin: 0 0 12px 0;
     }
@@ -154,7 +186,7 @@ ion-title {
       display: flex;
       gap: 16px;
       font-size: 13px;
-      color: #8c8c8c;
+      color: var(--sb-text-secondary);
       
       .task-date, .task-duration {
         display: flex;
@@ -163,6 +195,7 @@ ion-title {
         
         ion-icon {
           font-size: 14px;
+          color: var(--sb-text-tertiary);
         }
       }
     }
@@ -173,69 +206,56 @@ ion-title {
 .empty-tasks-message {
   text-align: center;
   margin-top: 60px;
-  color: #8c8c8c;
+  color: var(--sb-text-secondary);
   
   .empty-icon {
     font-size: 64px;
-    color: #4a4a4a;
+    color: var(--sb-text-muted);
     margin-bottom: 16px;
+    opacity: 0.6;
   }
   
   p {
     margin: 8px 0;
     font-size: 16px;
+    color: var(--sb-text-primary);
     
     &.empty-subtitle {
       font-size: 14px;
-      color: #6c6c6c;
+      color: var(--sb-text-secondary);
     }
   }
 }
 
 // General Styling
 ion-content {
-  --background: var(--ion-color-dark);
-  --color: var(--ion-color-light);
-}
-
-// Dark theme support
-:host-context(.ion-palette-dark) {
-  .tasks-container {
-    background-color: #1a1a1a;
-  }
-  
-  .tasks-searchbar {
-    --background: #2a2a2a;
-    
-    .searchbar-input {
-      --background: #2a2a2a !important;
-    }
-  }
+  --background: var(--sb-background-primary);
+  --color: var(--sb-text-primary);
 }
 
 // Add Task Modal Styles
 .add-task-modal-content {
-  --background: #1a1a1a;
-  --color: var(--ion-color-light);
+  --background: var(--sb-background-secondary);
+  --color: var(--sb-text-primary);
   padding: 16px;
 }
 
 .form-item {
-  --background: #2a2a2a;
-  --color: var(--ion-color-light);
-  --border-color: #3a3a3a;
+  --background: var(--sb-background-card);
+  --color: var(--sb-text-primary);
+  --border-color: var(--sb-border-light);
   border-radius: 8px;
   margin-bottom: 16px;
   
   ion-label {
-    color: #e0e0e0;
-    font-weight: 500;
+    color: var(--sb-text-primary);
+    font-weight: 600;
     margin-bottom: 4px;
   }
   
   ion-input, ion-select {
-    --color: var(--ion-color-light);
-    --placeholder-color: #8c8c8c;
+    --color: var(--sb-text-primary);
+    --placeholder-color: var(--sb-text-tertiary);
   }
 }
 
@@ -267,8 +287,8 @@ ion-content {
   
   .section-label {
     display: block;
-    color: #e0e0e0;
-    font-weight: 500;
+    color: var(--sb-text-primary);
+    font-weight: 600;
     margin-bottom: 12px;
     font-size: 14px;
   }
@@ -281,6 +301,34 @@ ion-content {
       flex: 1;
       text-transform: none;
       font-weight: 500;
+      --border-radius: 8px;
+      
+      &[fill="solid"] {
+        &[color="success"] {
+          --background: var(--sb-success);
+          --color: white;
+        }
+        
+        &[color="warning"] {
+          --background: var(--sb-warning);
+          --color: white;
+        }
+        
+        &[color="danger"] {
+          --background: var(--sb-danger);
+          --color: white;
+        }
+      }
+      
+      &[fill="outline"] {
+        --background: transparent;
+        --border-width: 1px;
+        
+        &[color="medium"] {
+          --color: var(--sb-text-secondary);
+          --border-color: var(--sb-border-light);
+        }
+      }
     }
   }
 }
@@ -290,4 +338,42 @@ ion-content {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  
+  ion-button {
+    --border-radius: 8px;
+    height: 48px;
+    font-weight: 600;
+    
+    &[fill="outline"] {
+      --background: transparent;
+      --color: var(--sb-text-secondary);
+      --border-color: var(--sb-border-light);
+      --border-width: 1px;
+    }
+    
+    &[type="submit"] {
+      --background: var(--sb-primary);
+      --color: var(--sb-text-primary);
+    }
+  }
+}
+
+// Dark theme support
+:host-context(.ion-palette-dark) {
+  .tasks-container {
+    background: var(--sb-background-primary);
+  }
+  
+  .task-card,
+  .form-item {
+    background: var(--sb-background-card);
+    border-color: var(--sb-border-light);
+  }
+  
+  .tasks-searchbar {
+    .searchbar-input {
+      --background: var(--sb-background-input) !important;
+      border-color: var(--sb-border-light);
+    }
+  }
 }

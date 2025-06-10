@@ -1,26 +1,274 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Tab 5</ion-title>
+    <ion-title>Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 5</ion-title>
+      <ion-title size="large">Profile</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <!-- Empty content area to fill -->
   <div class="content-container">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Tab 5 - Ready to Fill</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>This is Tab 5 content area. Add your content here.</p>
-        <ion-button fill="outline" color="warning">Sample Button</ion-button>
-      </ion-card-content>
-    </ion-card>
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <div class="profile-content">
+        <div class="profile-avatar">
+          <ion-icon name="person"></ion-icon>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name">Alex Johnson</div>
+          <div class="profile-email">alex.johnsonARRuniversity.edu</div>
+          <div class="profile-stats">
+            <div class="stat-item">
+              <div class="stat-number">156</div>
+              <div class="stat-label">Hours Studied</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">23</div>
+              <div class="stat-label">Day Streak</div>
+            </div>
+          </div>
+        </div>
+        <ion-button class="edit-profile-btn" fill="outline">
+          <ion-icon name="pencil"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Achievements -->
+    <div class="achievements">
+      <div class="achievements-header">
+        <h3>Recent Achievements</h3>
+        <ion-button class="view-all-btn" fill="clear">View All</ion-button>
+      </div>
+      <div class="badges-grid">
+        <div class="badge-item">
+          <div class="badge-icon earned">
+            <ion-icon name="flame" class="earned"></ion-icon>
+            <div class="badge-check">
+              <ion-icon name="checkmark"></ion-icon>
+            </div>
+          </div>
+          <div class="badge-title">7 Day Streak</div>
+        </div>
+        <div class="badge-item">
+          <div class="badge-icon earned">
+            <ion-icon name="time" class="earned"></ion-icon>
+            <div class="badge-check">
+              <ion-icon name="checkmark"></ion-icon>
+            </div>
+          </div>
+          <div class="badge-title">25 Hours</div>
+        </div>
+        <div class="badge-item">
+          <div class="badge-icon locked">
+            <ion-icon name="trophy" class="locked"></ion-icon>
+          </div>
+          <div class="badge-title">First Place</div>
+        </div>
+        <div class="badge-item">
+          <div class="badge-icon locked">
+            <ion-icon name="star" class="locked"></ion-icon>
+          </div>
+          <div class="badge-title">Perfect Week</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Study Preferences -->
+    <div class="settings-section">
+      <div class="section-header">
+        <h3>Study Preferences</h3>
+      </div>
+      <div style="padding: 16px;">
+        <div class="preferences-grid">
+          <div class="preference-card active">
+            <div class="preference-icon">
+              <ion-icon name="moon"></ion-icon>
+            </div>
+            <div class="preference-title">Night Owl</div>
+            <div class="preference-subtitle">Evening study</div>
+          </div>
+          <div class="preference-card">
+            <div class="preference-icon">
+              <ion-icon name="sunny"></ion-icon>
+            </div>
+            <div class="preference-title">Early Bird</div>
+            <div class="preference-subtitle">Morning study</div>
+          </div>
+          <div class="preference-card">
+            <div class="preference-icon">
+              <ion-icon name="headset"></ion-icon>
+            </div>
+            <div class="preference-title">Music On</div>
+            <div class="preference-subtitle">With background music</div>
+          </div>
+          <div class="preference-card active">
+            <div class="preference-icon">
+              <ion-icon name="timer"></ion-icon>
+            </div>
+            <div class="preference-title">Pomodoro</div>
+            <div class="preference-subtitle">25min sessions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- General Settings -->
+    <div class="settings-section">
+      <div class="section-header">
+        <h3>General</h3>
+      </div>
+      
+      <div class="settings-item">
+        <div class="item-icon primary">
+          <ion-icon name="notifications"></ion-icon>
+        </div>
+        <div class="item-content">
+          <div class="item-title">Notifications</div>
+          <div class="item-subtitle">Study reminders and updates</div>
+        </div>
+        <div class="item-action">
+          <ion-toggle class="toggle" checked></ion-toggle>
+        </div>
+      </div>
+      
+      <div class="settings-item">
+        <div class="item-icon success">
+          <ion-icon name="sync"></ion-icon>
+        </div>
+        <div class="item-content">
+          <div class="item-title">Auto Sync</div>
+          <div class="item-subtitle">Sync data across devices</div>
+        </div>
+        <div class="item-action">
+          <ion-toggle class="toggle" checked></ion-toggle>
+        </div>
+      </div>
+      
+      <div class="settings-item">
+        <div class="item-icon warning">
+          <ion-icon name="moon"></ion-icon>
+        </div>
+        <div class="item-content">
+          <div class="item-title">Dark Mode</div>
+          <div class="item-subtitle">Use dark theme</div>
+        </div>
+        <div class="item-action">
+          <ion-toggle class="toggle" checked></ion-toggle>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account Settings -->
+    <div class="settings-section">
+      <div class="section-header">
+        <h3>Account</h3>
+      </div>
+      
+      <div class="settings-item">
+        <div class="item-icon info">
+          <ion-icon name="person-circle"></ion-icon>
+        </div>
+        <div class="item-content">
+          <div class="item-title">Edit Profile</div>
+          <div class="item-subtitle">Update your information</div>
+        </div>
+        <div class="item-action">
+          <ion-icon name="chevron-forward" class="chevron"></ion-icon>
+        </div>
+      </div>
+      
+      <div class="settings-item">
+        <div class="item-icon primary">
+          <ion-icon name="key"></ion-icon>
+        </div>
+        <div class="item-content">
+          <div class="item-title">Change Password</div>
+          <div class="item-subtitle">Update your password</div>
+        </div>
+        <div class="item-action">
+          <ion-icon name="chevron-forward" class="chevron"></ion-icon>
+        </div>
+      </div>
+      
+      <div class="settings-item">
+        <div class="item-icon success">
+          <ion-icon name="shield-checkmark"></ion-icon>
+        </div>
+        <div class="item-content">
+          <div class="item-title">Privacy Settings</div>
+          <div class="item-subtitle">Manage your privacy</div>
+        </div>
+        <div class="item-action">
+          <ion-icon name="chevron-forward" class="chevron"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Support & About -->
+    <div class="settings-section">
+      <div class="section-header">
+        <h3>Support & About</h3>
+      </div>
+      
+      <div class="settings-item">
+        <div class="item-icon info">
+          <ion-icon name="help-circle"></ion-icon>
+        </div>
+        <div class="item-content">
+          <div class="item-title">Help Center</div>
+          <div class="item-subtitle">Get help and support</div>
+        </div>
+        <div class="item-action">
+          <ion-icon name="chevron-forward" class="chevron"></ion-icon>
+        </div>
+      </div>
+      
+      <div class="settings-item">
+        <div class="item-icon warning">
+          <ion-icon name="bug"></ion-icon>
+        </div>
+        <div class="item-content">
+          <div class="item-title">Report Bug</div>
+          <div class="item-subtitle">Report issues</div>
+        </div>
+        <div class="item-action">
+          <div class="badge">2</div>
+        </div>
+      </div>
+      
+      <div class="settings-item">
+        <div class="item-icon primary">
+          <ion-icon name="information-circle"></ion-icon>
+        </div>
+        <div class="item-content">
+          <div class="item-title">About StudyBuddy</div>
+          <div class="item-subtitle">Version 1.0.0</div>
+        </div>
+        <div class="item-action">
+          <ion-icon name="chevron-forward" class="chevron"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account Actions -->
+    <div class="account-actions">
+      <ion-button class="action-button primary-action">
+        <ion-icon name="cloud-upload"></ion-icon>
+        Backup Data
+      </ion-button>
+      <ion-button class="action-button warning-action">
+        <ion-icon name="refresh"></ion-icon>
+        Reset Settings
+      </ion-button>
+      <ion-button class="action-button">
+        <ion-icon name="log-out"></ion-icon>
+        Sign Out
+      </ion-button>
+    </div>
   </div>
 </ion-content>

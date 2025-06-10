@@ -1,37 +1,101 @@
-// For information on how to create your own theme, please see:
+// Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
-/* Theme base */
+
+/** StudyBuddy App Color Palette **/
 :root {
-  --background-lightz: #ffffff;
-  --background-darkz: #121212;
+  // Primary Colors
+  --sb-primary: #407dff;
+  --sb-primary-rgb: 64, 125, 255;
+  --sb-primary-contrast: #ffffff;
+  --sb-primary-contrast-rgb: 255, 255, 255;
+  --sb-primary-shade: #3970e0;
+  --sb-primary-tint: #5389ff;
 
-  --ion-background-color: var(--background-lightz);
-  --ion-toolbar-background: var(--ion-background-color);
-  --ion-item-background: var(--ion-background-color);
+  // Background Colors
+  --sb-background-primary: #121212;
+  --sb-background-secondary: #1a1a1a;
+  --sb-background-card: #1f1f1f;
+  --sb-background-input: #2a2a2a;
+  --sb-background-elevated: #2c2c2c;
 
-  --ion-text-color: #000; /* opcional: color de texto por defecto */
+  // Text Colors
+  --sb-text-primary: #ffffff;
+  --sb-text-secondary: #acacac;
+  --sb-text-tertiary: #8c8c8c;
+  --sb-text-muted: #6c6c6c;
+
+  // Border Colors
+  --sb-border-light: #3a3a3a;
+  --sb-border-medium: #4a4a4a;
+  --sb-border-strong: #5a5a5a;
+
+  // Status Colors
+  --sb-success: #34C759;
+  --sb-warning: #FFCC00;
+  --sb-danger: #FF3B30;
+  --sb-info: #5AC8FA;
+
+  // Ionic Theme Variables
+  --ion-background-color: var(--sb-background-primary);
+  --ion-background-color-rgb: 18, 18, 18;
+
+  --ion-text-color: var(--sb-text-primary);
+  --ion-text-color-rgb: 255, 255, 255;
+
+  --ion-color-primary: var(--sb-primary);
+  --ion-color-primary-rgb: var(--sb-primary-rgb);
+  --ion-color-primary-contrast: var(--sb-primary-contrast);
+  --ion-color-primary-contrast-rgb: var(--sb-primary-contrast-rgb);
+  --ion-color-primary-shade: var(--sb-primary-shade);
+  --ion-color-primary-tint: var(--sb-primary-tint);
+
+  --ion-toolbar-background: var(--sb-background-card);
+  --ion-item-background: var(--sb-background-card);
+  --ion-card-background: var(--sb-background-card);
 }
 
-/* iOS específico */
-:root.ios {
-  --ion-background-color: var(--background-lightz);
-  --ion-toolbar-background: var(--ion-background-color);
-  --ion-item-background: var(--ion-background-color);
+// Dark theme (default)
+.ion-palette-dark {
+  --ion-background-color: var(--sb-background-primary);
+  --ion-background-color-rgb: 18, 18, 18;
+  --ion-text-color: var(--sb-text-primary);
+  --ion-text-color-rgb: 255, 255, 255;
+  --ion-toolbar-background: var(--sb-background-card);
+  --ion-item-background: var(--sb-background-card);
 }
 
-/* Material Design específico */
-:root.md {
-  --ion-background-color: var(--background-lightz);
-  --ion-toolbar-background: var(--ion-background-color);
-  --ion-item-background: var(--ion-background-color);
+// Common component styles
+.sb-card {
+  background: var(--sb-background-card);
+  border-radius: 12px;
+  border: 1px solid var(--sb-border-light);
+  margin-bottom: 16px;
+  overflow: hidden;
 }
 
-/* Dark mode: aplica globalmente para cualquier plataforma con clase .ion-palette-dark */
-.ion-palette-dark,
-.ion-palette-dark.ios,
-.ion-palette-dark.md {
-  --ion-background-color: var(--background-darkz);
-  --ion-toolbar-background: var(--ion-background-color);
-  --ion-item-background: var(--background-darkz);
-  --ion-text-color: #fff; /* opcional */
+.sb-button-primary {
+  --background: var(--sb-primary);
+  --color: var(--sb-text-primary);
+  --border-radius: 8px;
+  font-weight: 600;
+}
+
+.sb-input {
+  --background: var(--sb-background-input);
+  --color: var(--sb-text-primary);
+  --placeholder-color: var(--sb-text-tertiary);
+  --border-color: var(--sb-border-light);
+  border-radius: 8px;
+}
+
+.sb-text-primary {
+  color: var(--sb-text-primary);
+}
+
+.sb-text-secondary {
+  color: var(--sb-text-secondary);
+}
+
+.sb-text-muted {
+  color: var(--sb-text-muted);
 }
